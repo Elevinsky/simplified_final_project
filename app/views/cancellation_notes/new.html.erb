@@ -24,7 +24,7 @@
           Lesson
         </label>
 
-        <input type="text" id="lesson_id" name="lesson_id" placeholder="Lesson" class="form-control" value="<%= @cancellation_note.lesson_id %>">
+        <%= select_tag(:lesson_id, options_from_collection_for_select(Lesson.all, :id, :trainer_id, @cancellation_note.lesson_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for body -->
