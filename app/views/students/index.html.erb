@@ -22,8 +22,11 @@
         <td><%= student.user.email %></td>
         <td>
           <a href="/students/<%= student.id %>" class="btn btn-primary">Show</a>
-          <a href="/students/<%= student.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_student/<%= student.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == student.user %>
+            <a href="/students/<%= student.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_student/<%= student.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>
