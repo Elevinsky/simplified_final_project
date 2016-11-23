@@ -59,6 +59,46 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_lesson" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for trainer_id -->
+      <div class="form-group">
+        <label for="trainer_id" class="control-label">
+          Trainer
+        </label>
+
+        <%= select_tag(:trainer_id, options_from_collection_for_select(Trainer.all, :id, :name), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for student_id -->
+      <input type="hidden" name="student_id" value="<%= @student.id %>">
+
+      <!-- Label and input for lesson_time -->
+      <div class="form-group">
+        <label for="lesson_time" class="control-label">
+          Lesson time
+        </label>
+
+        <input type="text" id="lesson_time" name="lesson_time" placeholder="Lesson time" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for checked_in -->
+      <div class="checkbox">
+        <label for="checked_in">
+          <input type="checkbox" id="checked_in" name="checked_in" value="1" <%= "checked" if @lesson.checked_in %>>
+          Checked in
+        </label>
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Lesson
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>

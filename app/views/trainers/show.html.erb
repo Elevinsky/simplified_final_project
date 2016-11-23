@@ -159,6 +159,38 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_schedule_adjustment" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for trainer_id -->
+      <input type="hidden" name="trainer_id" value="<%= @trainer.id %>">
+
+      <!-- Label and input for adjusted_start -->
+      <div class="form-group">
+        <label for="adjusted_start" class="control-label">
+          Adjusted start
+        </label>
+
+        <input type="text" id="adjusted_start" name="adjusted_start" placeholder="Adjusted start" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for adjusted_end -->
+      <div class="form-group">
+        <label for="adjusted_end" class="control-label">
+          Adjusted end
+        </label>
+
+        <input type="text" id="adjusted_end" name="adjusted_end" placeholder="Adjusted end" class="form-control" value="">
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Schedule Adjustment
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>
@@ -190,6 +222,38 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_break" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for trainer_id -->
+      <input type="hidden" name="trainer_id" value="<%= @trainer.id %>">
+
+      <!-- Label and input for start -->
+      <div class="form-group">
+        <label for="start" class="control-label">
+          Start
+        </label>
+
+        <input type="text" id="start" name="start" placeholder="Start" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for end -->
+      <div class="form-group">
+        <label for="end" class="control-label">
+          End
+        </label>
+
+        <input type="text" id="end" name="end" placeholder="End" class="form-control" value="">
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Break
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>
@@ -221,6 +285,46 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_lesson" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for trainer_id -->
+      <input type="hidden" name="trainer_id" value="<%= @trainer.id %>">
+
+      <!-- Label and input for student_id -->
+      <div class="form-group">
+        <label for="student_id" class="control-label">
+          Student
+        </label>
+
+        <%= select_tag(:student_id, options_from_collection_for_select(Student.all, :id, :name), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for lesson_time -->
+      <div class="form-group">
+        <label for="lesson_time" class="control-label">
+          Lesson time
+        </label>
+
+        <input type="text" id="lesson_time" name="lesson_time" placeholder="Lesson time" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for checked_in -->
+      <div class="checkbox">
+        <label for="checked_in">
+          <input type="checkbox" id="checked_in" name="checked_in" value="1" <%= "checked" if @lesson.checked_in %>>
+          Checked in
+        </label>
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Lesson
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>

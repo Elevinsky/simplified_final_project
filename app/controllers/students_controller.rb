@@ -16,6 +16,7 @@ class StudentsController < ApplicationController
   end
 
   def show
+    @lesson = Lesson.new
     @student = Student.find(params[:id])
 
     render("students/show.html.erb")

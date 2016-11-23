@@ -6,6 +6,9 @@ class TrainersController < ApplicationController
   end
 
   def show
+    @lesson = Lesson.new
+    @break = Break.new
+    @schedule_adjustment = ScheduleAdjustment.new
     @trainer = Trainer.find(params[:id])
 
     render("trainers/show.html.erb")
