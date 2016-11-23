@@ -1,6 +1,9 @@
 class Trainer < ApplicationRecord
   # Direct associations
 
+  has_many   :schedule_adjustments,
+             :dependent => :destroy
+
   # Indirect associations
 
   # Validations

@@ -1,6 +1,8 @@
 class ScheduleAdjustment < ApplicationRecord
   # Direct associations
 
+  belongs_to :trainer
+
   # Indirect associations
 
   # Validations
