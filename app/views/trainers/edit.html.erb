@@ -9,12 +9,12 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Trainer #<%= @trainer.id %></h3>
+  <h3>Edit <%= @trainer.name %></h3>
 </div>
 
 <div class="row">
   <div class="col-md-12">
-    <form action="/update_trainer/<%= @trainer.id %>" method="post">
+    <form action="/create_trainer" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
@@ -27,335 +27,206 @@
         <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @trainer.name %>">
       </div>
 
-      <!-- Label and input for tues_start_hour -->
+      <!-- Label and input for tues_start -->
       <div class="form-group">
         <label for="tues_start_hour" class="control-label">
-          Tues start hour
+          Tuesday
         </label>
-
-        <input type="text" id="tues_start_hour" name="tues_start_hour" placeholder="Tues start hour" class="form-control" value="<%= @trainer.tues_start_hour %>">
+        <div class="row">
+          <div class="col-md-1">
+            Start Time
+          </div>
+          <div class="col-md-1">
+        <input type="text" id="tues_start_hour" name="tues_start_hour" placeholder="Hour" class="form-control" value="<%= @trainer.tues_start_hour %>">
+      </div>
+        <div class="col-md-1">
+        <input type="text" id="tues_start_min" name="tues_start_min" placeholder="Min" class="form-control" value="<%= @trainer.tues_start_min %>">
+      </div>
+      <div class="col-md-1">
+        <input type="text" id="tues_start_am_pm" name="tues_start_am_pm" placeholder="am pm" class="form-control" value="<%= @trainer.tues_start_am_pm %>">
+      </div>
+      <div class="col-md-1">
+        End Time
+      </div>
+          <div class="col-md-1">
+        <input type="text" id="tues_end_hour" name="tues_end_hour" placeholder="Hour" class="form-control" value="<%= @trainer.tues_end_hour %>">
+      </div>
+        <div class="col-md-1">
+        <input type="text" id="tues_end_min" name="tues_end_min" placeholder="Min" class="form-control" value="<%= @trainer.tues_end_min %>">
+      </div>
+      <div class="col-md-1">
+        <input type="text" id="tues_end_am_pm" name="tues_end_am_pm" placeholder="am pm" class="form-control" value="<%= @trainer.tues_end_am_pm %>">
+      </div>
       </div>
 
-      <!-- Label and input for tues_start_min -->
-      <div class="form-group">
-        <label for="tues_start_min" class="control-label">
-          Tues start min
-        </label>
-
-        <input type="text" id="tues_start_min" name="tues_start_min" placeholder="Tues start min" class="form-control" value="<%= @trainer.tues_start_min %>">
-      </div>
-
-      <!-- Label and input for tues_start_am_pm -->
-      <div class="form-group">
-        <label for="tues_start_am_pm" class="control-label">
-          Tues start am pm
-        </label>
-
-        <input type="text" id="tues_start_am_pm" name="tues_start_am_pm" placeholder="Tues start am pm" class="form-control" value="<%= @trainer.tues_start_am_pm %>">
-      </div>
-
-      <!-- Label and input for wed_start_hour -->
+      <!-- Label and input for wed_start -->
       <div class="form-group">
         <label for="wed_start_hour" class="control-label">
-          Wed start hour
+          Wednesday
         </label>
-
-        <input type="text" id="wed_start_hour" name="wed_start_hour" placeholder="Wed start hour" class="form-control" value="<%= @trainer.wed_start_hour %>">
+        <div class="row">
+          <div class="col-md-1">
+            Start Time
+          </div>
+          <div class="col-md-1">
+        <input type="text" id="wed_start_hour" name="wed_start_hour" placeholder="Hour" class="form-control" value="<%= @trainer.wed_start_hour %>">
+      </div>
+        <div class="col-md-1">
+        <input type="text" id="wed_start_min" name="wed_start_min" placeholder="Min" class="form-control" value="<%= @trainer.wed_start_min %>">
+      </div>
+      <div class="col-md-1">
+        <input type="text" id="wed_start_am_pm" name="wed_start_am_pm" placeholder="am pm" class="form-control" value="<%= @trainer.wed_start_am_pm %>">
+      </div>
+        <div class="col-md-1">
+        End Time
+        </div>
+          <div class="col-md-1">
+        <input type="text" id="wed_end_hour" name="wed_end_hour" placeholder="Hour" class="form-control" value="<%= @trainer.wed_end_hour %>">
+      </div>
+        <div class="col-md-1">
+        <input type="text" id="wed_end_min" name="wed_end_min" placeholder="Min" class="form-control" value="<%= @trainer.wed_end_min %>">
+      </div>
+      <div class="col-md-1">
+        <input type="text" id="wed_end_am_pm" name="wed_end_am_pm" placeholder="am pm" class="form-control" value="<%= @trainer.wed_end_am_pm %>">
+      </div>
       </div>
 
-      <!-- Label and input for wed_start_min -->
-      <div class="form-group">
-        <label for="wed_start_min" class="control-label">
-          Wed start min
-        </label>
 
-        <input type="text" id="wed_start_min" name="wed_start_min" placeholder="Wed start min" class="form-control" value="<%= @trainer.wed_start_min %>">
-      </div>
-
-      <!-- Label and input for wed_start_am_pm -->
-      <div class="form-group">
-        <label for="wed_start_am_pm" class="control-label">
-          Wed start am pm
-        </label>
-
-        <input type="text" id="wed_start_am_pm" name="wed_start_am_pm" placeholder="Wed start am pm" class="form-control" value="<%= @trainer.wed_start_am_pm %>">
-      </div>
-
-      <!-- Label and input for thur_start_hour -->
+      <!-- Label and input for thur_start -->
       <div class="form-group">
         <label for="thur_start_hour" class="control-label">
-          Thur start hour
+          Thursday
         </label>
-
-        <input type="text" id="thur_start_hour" name="thur_start_hour" placeholder="Thur start hour" class="form-control" value="<%= @trainer.thur_start_hour %>">
+        <div class="row">
+          <div class="col-md-1">
+            Start Time
+          </div>
+          <div class="col-md-1">
+        <input type="text" id="thur_start_hour" name="thur_start_hour" placeholder="Hour" class="form-control" value="<%= @trainer.thur_start_hour %>">
+      </div>
+        <div class="col-md-1">
+        <input type="text" id="thur_start_min" name="thur_start_min" placeholder="Min" class="form-control" value="<%= @trainer.thur_start_min %>">
+      </div>
+      <div class="col-md-1">
+        <input type="text" id="thur_start_am_pm" name="thur_start_am_pm" placeholder="am pm" class="form-control" value="<%= @trainer.thur_start_am_pm %>">
+      </div>
+          <div class="col-md-1">
+            End Time
+          </div>
+          <div class="col-md-1">
+        <input type="text" id="thur_end_hour" name="thur_end_hour" placeholder="Hour" class="form-control" value="<%= @trainer.thur_end_hour %>">
+      </div>
+        <div class="col-md-1">
+        <input type="text" id="thur_end_min" name="thur_end_min" placeholder="Min" class="form-control" value="<%= @trainer.thur_end_min %>">
+      </div>
+      <div class="col-md-1">
+        <input type="text" id="thur_end_am_pm" name="thur_end_am_pm" placeholder="am pm" class="form-control" value="<%= @trainer.thur_end_am_pm %>">
+      </div>
       </div>
 
-      <!-- Label and input for thur_start_min -->
-      <div class="form-group">
-        <label for="thur_start_min" class="control-label">
-          Thur start min
-        </label>
-
-        <input type="text" id="thur_start_min" name="thur_start_min" placeholder="Thur start min" class="form-control" value="<%= @trainer.thur_start_min %>">
-      </div>
-
-      <!-- Label and input for thur_start_am_pm -->
-      <div class="form-group">
-        <label for="thur_start_am_pm" class="control-label">
-          Thur start am pm
-        </label>
-
-        <input type="text" id="thur_start_am_pm" name="thur_start_am_pm" placeholder="Thur start am pm" class="form-control" value="<%= @trainer.thur_start_am_pm %>">
-      </div>
-
-      <!-- Label and input for fri_start_hour -->
+      <!-- Label and input for fri_start -->
       <div class="form-group">
         <label for="fri_start_hour" class="control-label">
-          Fri start hour
+          Friday
         </label>
-
-        <input type="text" id="fri_start_hour" name="fri_start_hour" placeholder="Fri start hour" class="form-control" value="<%= @trainer.fri_start_hour %>">
+        <div class="row">
+          <div class="col-md-1">
+            Start Time
+          </div>
+          <div class="col-md-1">
+        <input type="text" id="fri_start_hour" name="fri_start_hour" placeholder="Hour" class="form-control" value="<%= @trainer.fri_start_hour %>">
+      </div>
+        <div class="col-md-1">
+        <input type="text" id="fri_start_min" name="fri_start_min" placeholder="Min" class="form-control" value="<%= @trainer.fri_start_min %>">
+      </div>
+      <div class="col-md-1">
+        <input type="text" id="fri_start_am_pm" name="fri_start_am_pm" placeholder="am pm" class="form-control" value="<%= @trainer.fri_start_am_pm %>">
+      </div>
+      <div class="col-md-1">
+        End Time
+      </div>
+          <div class="col-md-1">
+        <input type="text" id="fri_end_hour" name="fri_end_hour" placeholder="Hour" class="form-control" value="<%= @trainer.fri_end_hour %>">
+      </div>
+        <div class="col-md-1">
+        <input type="text" id="fri_end_min" name="fri_end_min" placeholder="Min" class="form-control" value="<%= @trainer.fri_end_min %>">
+      </div>
+      <div class="col-md-1">
+        <input type="text" id="fri_end_am_pm" name="fri_end_am_pm" placeholder="am pm" class="form-control" value="<%= @trainer.fri_end_am_pm %>">
+      </div>
       </div>
 
-      <!-- Label and input for fri_start_min -->
-      <div class="form-group">
-        <label for="fri_start_min" class="control-label">
-          Fri start min
-        </label>
 
-        <input type="text" id="fri_start_min" name="fri_start_min" placeholder="Fri start min" class="form-control" value="<%= @trainer.fri_start_min %>">
-      </div>
-
-      <!-- Label and input for fri_start_am_pm -->
-      <div class="form-group">
-        <label for="fri_start_am_pm" class="control-label">
-          Fri start am pm
-        </label>
-
-        <input type="text" id="fri_start_am_pm" name="fri_start_am_pm" placeholder="Fri start am pm" class="form-control" value="<%= @trainer.fri_start_am_pm %>">
-      </div>
-
-      <!-- Label and input for sat_start_hour -->
+      <!-- Label and input for sat_start -->
       <div class="form-group">
         <label for="sat_start_hour" class="control-label">
-          Sat start hour
+          Saturday
         </label>
-
-        <input type="text" id="sat_start_hour" name="sat_start_hour" placeholder="Sat start hour" class="form-control" value="<%= @trainer.sat_start_hour %>">
+        <div class="row">
+          <div class="col-md-1">
+            Start Time
+          </div>
+          <div class="col-md-1">
+        <input type="text" id="sat_start_hour" name="sat_start_hour" placeholder="Hour" class="form-control" value="<%= @trainer.sat_start_hour %>">
+      </div>
+        <div class="col-md-1">
+        <input type="text" id="sat_start_min" name="sat_start_min" placeholder="Min" class="form-control" value="<%= @trainer.sat_start_min %>">
+      </div>
+      <div class="col-md-1">
+        <input type="text" id="sat_start_am_pm" name="sat_start_am_pm" placeholder="am pm" class="form-control" value="<%= @trainer.sat_start_am_pm %>">
+      </div>
+      <div class="col-md-1">
+        End Time
+      </div>
+          <div class="col-md-1">
+        <input type="text" id="sat_end_hour" name="sat_end_hour" placeholder="Hour" class="form-control" value="<%= @trainer.sat_end_hour %>">
+      </div>
+        <div class="col-md-1">
+        <input type="text" id="sat_end_min" name="sat_end_min" placeholder="Min" class="form-control" value="<%= @trainer.sat_end_min %>">
+      </div>
+      <div class="col-md-1">
+        <input type="text" id="sat_end_am_pm" name="sat_end_am_pm" placeholder="am pm" class="form-control" value="<%= @trainer.sat_end_am_pm %>">
+      </div>
       </div>
 
-      <!-- Label and input for sat_start_min -->
+      <!-- Label and input for sun_start -->
       <div class="form-group">
-        <label for="sat_start_min" class="control-label">
-          Sat start min
+        <label for="sat_start_hour" class="control-label">
+          Sunday
         </label>
-
-        <input type="text" id="sat_start_min" name="sat_start_min" placeholder="Sat start min" class="form-control" value="<%= @trainer.sat_start_min %>">
+        <div class="row">
+          <div class="col-md-1">
+            Start Time
+          </div>
+          <div class="col-md-1">
+        <input type="text" id="sun_start_hour" name="sun_start_hour" placeholder="Hour" class="form-control" value="<%= @trainer.sun_start_hour %>">
+      </div>
+        <div class="col-md-1">
+        <input type="text" id="sun_start_min" name="sun_start_min" placeholder="Min" class="form-control" value="<%= @trainer.sun_start_min %>">
+      </div>
+      <div class="col-md-1">
+        <input type="text" id="sun_start_am_pm" name="sun_start_am_pm" placeholder="am pm" class="form-control" value="<%= @trainer.sun_start_am_pm %>">
+      </div>
+      <div class="col-md-1">
+        End Time
+      </div>
+          <div class="col-md-1">
+        <input type="text" id="sun_end_hour" name="sun_end_hour" placeholder="Hour" class="form-control" value="<%= @trainer.sun_end_hour %>">
+      </div>
+        <div class="col-md-1">
+        <input type="text" id="sun_end_min" name="sun_end_min" placeholder="Min" class="form-control" value="<%= @trainer.sun_end_min %>">
+      </div>
+      <div class="col-md-1">
+        <input type="text" id="sun_end_am_pm" name="sun_end_am_pm" placeholder="am pm" class="form-control" value="<%= @trainer.sun_end_am_pm %>">
+      </div>
       </div>
 
-      <!-- Label and input for sat_start_am_pm -->
-      <div class="form-group">
-        <label for="sat_start_am_pm" class="control-label">
-          Sat start am pm
-        </label>
 
-        <input type="text" id="sat_start_am_pm" name="sat_start_am_pm" placeholder="Sat start am pm" class="form-control" value="<%= @trainer.sat_start_am_pm %>">
-      </div>
-
-      <!-- Label and input for sun_start_hour -->
-      <div class="form-group">
-        <label for="sun_start_hour" class="control-label">
-          Sun start hour
-        </label>
-
-        <input type="text" id="sun_start_hour" name="sun_start_hour" placeholder="Sun start hour" class="form-control" value="<%= @trainer.sun_start_hour %>">
-      </div>
-
-      <!-- Label and input for sun_start_min -->
-      <div class="form-group">
-        <label for="sun_start_min" class="control-label">
-          Sun start min
-        </label>
-
-        <input type="text" id="sun_start_min" name="sun_start_min" placeholder="Sun start min" class="form-control" value="<%= @trainer.sun_start_min %>">
-      </div>
-
-      <!-- Label and input for sun_start_am_pm -->
-      <div class="form-group">
-        <label for="sun_start_am_pm" class="control-label">
-          Sun start am pm
-        </label>
-
-        <input type="text" id="sun_start_am_pm" name="sun_start_am_pm" placeholder="Sun start am pm" class="form-control" value="<%= @trainer.sun_start_am_pm %>">
-      </div>
-
-      <!-- Label and input for tues_end_hour -->
-      <div class="form-group">
-        <label for="tues_end_hour" class="control-label">
-          Tues end hour
-        </label>
-
-        <input type="text" id="tues_end_hour" name="tues_end_hour" placeholder="Tues end hour" class="form-control" value="<%= @trainer.tues_end_hour %>">
-      </div>
-
-      <!-- Label and input for tues_end_min -->
-      <div class="form-group">
-        <label for="tues_end_min" class="control-label">
-          Tues end min
-        </label>
-
-        <input type="text" id="tues_end_min" name="tues_end_min" placeholder="Tues end min" class="form-control" value="<%= @trainer.tues_end_min %>">
-      </div>
-
-      <!-- Label and input for tues_end_am_pm -->
-      <div class="form-group">
-        <label for="tues_end_am_pm" class="control-label">
-          Tues end am pm
-        </label>
-
-        <input type="text" id="tues_end_am_pm" name="tues_end_am_pm" placeholder="Tues end am pm" class="form-control" value="<%= @trainer.tues_end_am_pm %>">
-      </div>
-
-      <!-- Label and input for wed_end_hour -->
-      <div class="form-group">
-        <label for="wed_end_hour" class="control-label">
-          Wed end hour
-        </label>
-
-        <input type="text" id="wed_end_hour" name="wed_end_hour" placeholder="Wed end hour" class="form-control" value="<%= @trainer.wed_end_hour %>">
-      </div>
-
-      <!-- Label and input for wed_end_min -->
-      <div class="form-group">
-        <label for="wed_end_min" class="control-label">
-          Wed end min
-        </label>
-
-        <input type="text" id="wed_end_min" name="wed_end_min" placeholder="Wed end min" class="form-control" value="<%= @trainer.wed_end_min %>">
-      </div>
-
-      <!-- Label and input for wed_end_am_pm -->
-      <div class="form-group">
-        <label for="wed_end_am_pm" class="control-label">
-          Wed end am pm
-        </label>
-
-        <input type="text" id="wed_end_am_pm" name="wed_end_am_pm" placeholder="Wed end am pm" class="form-control" value="<%= @trainer.wed_end_am_pm %>">
-      </div>
-
-      <!-- Label and input for thur_end_hour -->
-      <div class="form-group">
-        <label for="thur_end_hour" class="control-label">
-          Thur end hour
-        </label>
-
-        <input type="text" id="thur_end_hour" name="thur_end_hour" placeholder="Thur end hour" class="form-control" value="<%= @trainer.thur_end_hour %>">
-      </div>
-
-      <!-- Label and input for thur_end_min -->
-      <div class="form-group">
-        <label for="thur_end_min" class="control-label">
-          Thur end min
-        </label>
-
-        <input type="text" id="thur_end_min" name="thur_end_min" placeholder="Thur end min" class="form-control" value="<%= @trainer.thur_end_min %>">
-      </div>
-
-      <!-- Label and input for thur_end_am_pm -->
-      <div class="form-group">
-        <label for="thur_end_am_pm" class="control-label">
-          Thur end am pm
-        </label>
-
-        <input type="text" id="thur_end_am_pm" name="thur_end_am_pm" placeholder="Thur end am pm" class="form-control" value="<%= @trainer.thur_end_am_pm %>">
-      </div>
-
-      <!-- Label and input for fri_end_hour -->
-      <div class="form-group">
-        <label for="fri_end_hour" class="control-label">
-          Fri end hour
-        </label>
-
-        <input type="text" id="fri_end_hour" name="fri_end_hour" placeholder="Fri end hour" class="form-control" value="<%= @trainer.fri_end_hour %>">
-      </div>
-
-      <!-- Label and input for fri_end_min -->
-      <div class="form-group">
-        <label for="fri_end_min" class="control-label">
-          Fri end min
-        </label>
-
-        <input type="text" id="fri_end_min" name="fri_end_min" placeholder="Fri end min" class="form-control" value="<%= @trainer.fri_end_min %>">
-      </div>
-
-      <!-- Label and input for fri_end_am_pm -->
-      <div class="form-group">
-        <label for="fri_end_am_pm" class="control-label">
-          Fri end am pm
-        </label>
-
-        <input type="text" id="fri_end_am_pm" name="fri_end_am_pm" placeholder="Fri end am pm" class="form-control" value="<%= @trainer.fri_end_am_pm %>">
-      </div>
-
-      <!-- Label and input for sat_end_hour -->
-      <div class="form-group">
-        <label for="sat_end_hour" class="control-label">
-          Sat end hour
-        </label>
-
-        <input type="text" id="sat_end_hour" name="sat_end_hour" placeholder="Sat end hour" class="form-control" value="<%= @trainer.sat_end_hour %>">
-      </div>
-
-      <!-- Label and input for sat_end_min -->
-      <div class="form-group">
-        <label for="sat_end_min" class="control-label">
-          Sat end min
-        </label>
-
-        <input type="text" id="sat_end_min" name="sat_end_min" placeholder="Sat end min" class="form-control" value="<%= @trainer.sat_end_min %>">
-      </div>
-
-      <!-- Label and input for sat_end_am_pm -->
-      <div class="form-group">
-        <label for="sat_end_am_pm" class="control-label">
-          Sat end am pm
-        </label>
-
-        <input type="text" id="sat_end_am_pm" name="sat_end_am_pm" placeholder="Sat end am pm" class="form-control" value="<%= @trainer.sat_end_am_pm %>">
-      </div>
-
-      <!-- Label and input for sun_end_hour -->
-      <div class="form-group">
-        <label for="sun_end_hour" class="control-label">
-          Sun end hour
-        </label>
-
-        <input type="text" id="sun_end_hour" name="sun_end_hour" placeholder="Sun end hour" class="form-control" value="<%= @trainer.sun_end_hour %>">
-      </div>
-
-      <!-- Label and input for sun_end_min -->
-      <div class="form-group">
-        <label for="sun_end_min" class="control-label">
-          Sun end min
-        </label>
-
-        <input type="text" id="sun_end_min" name="sun_end_min" placeholder="Sun end min" class="form-control" value="<%= @trainer.sun_end_min %>">
-      </div>
-
-      <!-- Label and input for sun_end_am_pm -->
-      <div class="form-group">
-        <label for="sun_end_am_pm" class="control-label">
-          Sun end am pm
-        </label>
-
-        <input type="text" id="sun_end_am_pm" name="sun_end_am_pm" placeholder="Sun end am pm" class="form-control" value="<%= @trainer.sun_end_am_pm %>">
-      </div>
-
-      <button class="btn btn-warning">
-        Update Trainer
+      <button class="btn btn-success">
+        Create Trainer
       </button>
       or
-      <a href="/trainers/<%= @trainer.id %>">Cancel</a>
+      <a href="/trainers">Cancel</a>
     </form>
   </div>
 </div>
