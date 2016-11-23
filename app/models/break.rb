@@ -5,4 +5,6 @@ class Break < ApplicationRecord
 
   # Validations
 
+  validates :trainer_id, :presence => true
+
 end
