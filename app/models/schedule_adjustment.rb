@@ -5,4 +5,6 @@ class ScheduleAdjustment < ApplicationRecord
 
   # Validations
 
+  validates :trainer_id, :presence => true
+
 end
