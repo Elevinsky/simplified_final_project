@@ -10,7 +10,7 @@ class StudentsController < ApplicationController
   end
 
   def index
-    @students = Student.all
+    @students = Student.page(params[:page]).per(10)
 
     render("students/index.html.erb")
   end

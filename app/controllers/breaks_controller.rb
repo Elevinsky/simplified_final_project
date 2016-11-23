@@ -1,6 +1,6 @@
 class BreaksController < ApplicationController
   def index
-    @breaks = Break.all
+    @breaks = Break.page(params[:page]).per(10)
 
     render("breaks/index.html.erb")
   end

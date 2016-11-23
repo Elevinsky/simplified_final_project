@@ -1,6 +1,6 @@
 class TrainersController < ApplicationController
   def index
-    @trainers = Trainer.all
+    @trainers = Trainer.page(params[:page]).per(10)
 
     render("trainers/index.html.erb")
   end

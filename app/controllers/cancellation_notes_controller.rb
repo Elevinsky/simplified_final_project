@@ -1,6 +1,6 @@
 class CancellationNotesController < ApplicationController
   def index
-    @cancellation_notes = CancellationNote.all
+    @cancellation_notes = CancellationNote.page(params[:page]).per(10)
 
     render("cancellation_notes/index.html.erb")
   end
