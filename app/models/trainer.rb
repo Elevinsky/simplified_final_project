@@ -5,4 +5,6 @@ class Trainer < ApplicationRecord
 
   # Validations
 
+  validates :wed_start_min, :presence => true
+
 end
