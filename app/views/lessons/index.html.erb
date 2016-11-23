@@ -19,7 +19,7 @@
       <% @lessons.each do |lesson| %>
       <tr>
         <td><%= lesson.trainer.name %></td>
-        <td><%= lesson.student_id %></td>
+        <td><%= lesson.student.name %></td>
         <td><%= lesson.lesson_time %></td>
         <td><%= lesson.checked_in %></td>
         <td>
