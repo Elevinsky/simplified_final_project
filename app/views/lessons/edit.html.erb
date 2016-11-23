@@ -1,0 +1,63 @@
+<!-- Validation failure messages -->
+<% if @lesson.errors.any? %>
+  <% @lesson.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Lesson #<%= @lesson.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_lesson/<%= @lesson.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for trainer_id -->
+      <div class="form-group">
+        <label for="trainer_id" class="control-label">
+          Trainer
+        </label>
+
+        <input type="text" id="trainer_id" name="trainer_id" placeholder="Trainer" class="form-control" value="<%= @lesson.trainer_id %>">
+      </div>
+
+      <!-- Label and input for student_id -->
+      <div class="form-group">
+        <label for="student_id" class="control-label">
+          Student
+        </label>
+
+        <input type="text" id="student_id" name="student_id" placeholder="Student" class="form-control" value="<%= @lesson.student_id %>">
+      </div>
+
+      <!-- Label and input for lesson_time -->
+      <div class="form-group">
+        <label for="lesson_time" class="control-label">
+          Lesson time
+        </label>
+
+        <input type="text" id="lesson_time" name="lesson_time" placeholder="Lesson time" class="form-control" value="<%= @lesson.lesson_time %>">
+      </div>
+
+      <!-- Label and input for checked_in -->
+      <div class="checkbox">
+        <label for="checked_in">
+          <input type="checkbox" id="checked_in" name="checked_in" value="1" <%= "checked" if @lesson.checked_in %>>
+          Checked in
+        </label>
+      </div>
+
+      <button class="btn btn-warning">
+        Update Lesson
+      </button>
+      or
+      <a href="/lessons/<%= @lesson.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

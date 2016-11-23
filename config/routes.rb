@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Lesson resource:
+  # CREATE
+  get "/lessons/new", :controller => "lessons", :action => "new"
+  post "/create_lesson", :controller => "lessons", :action => "create"
+
+  # READ
+  get "/lessons", :controller => "lessons", :action => "index"
+  get "/lessons/:id", :controller => "lessons", :action => "show"
+
+  # UPDATE
+  get "/lessons/:id/edit", :controller => "lessons", :action => "edit"
+  post "/update_lesson/:id", :controller => "lessons", :action => "update"
+
+  # DELETE
+  get "/delete_lesson/:id", :controller => "lessons", :action => "destroy"
+  #------------------------------
+
   # Routes for the Break resource:
   # CREATE
   get "/breaks/new", :controller => "breaks", :action => "new"
