@@ -1,6 +1,9 @@
 class Lesson < ApplicationRecord
   # Direct associations
 
+  has_one    :cancellation_note,
+             :dependent => :destroy
+
   belongs_to :trainer
 
   belongs_to :student
