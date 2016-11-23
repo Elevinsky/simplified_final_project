@@ -24,7 +24,7 @@
           Trainer
         </label>
 
-        <input type="text" id="trainer_id" name="trainer_id" placeholder="Trainer" class="form-control" value="<%= @lesson.trainer_id %>">
+        <%= select_tag(:trainer_id, options_from_collection_for_select(Trainer.all, :id, :name, @lesson.trainer_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for student_id -->
