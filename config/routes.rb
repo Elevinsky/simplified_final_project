@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "students#index"
   # Routes for the Cancellation_note resource:
   # CREATE
   get "/cancellation_notes/new", :controller => "cancellation_notes", :action => "new"
