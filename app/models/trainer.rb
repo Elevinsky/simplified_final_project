@@ -5,6 +5,8 @@ class Trainer < ApplicationRecord
 
   # Validations
 
+  validates :fri_start_am_pm, :presence => true
+
   validates :fri_start_hour, :presence => true
 
   validates :fri_start_hour, :numericality => { :greater_than => 0, :less_than_or_equal_to => 12 }
