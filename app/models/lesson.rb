@@ -12,7 +12,7 @@ class Lesson < ApplicationRecord
 
   # Validations
 
-  validates :lesson_time, :presence => true
+  validates :lesson_time, :presence => true, :uniqueness => { :scope => [:trainer_id, :lesson_time]}
 
   validates :student_id, :presence => true
 

@@ -1,5 +1,6 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
@@ -20,7 +21,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -52,7 +53,7 @@ gem 'starter_generators', :git => 'https://github.com/raghubetina/starter_genera
 gem 'font-awesome-sass', '~> 4.5.0'
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'inherited_resources', :git => 'https://github.com/activeadmin/inherited_resources.git'
-gem "rollbar"
+# gem "rollbar"
 gem "kaminari"
 gem "bootstrap4-kaminari-views"
 gem 'seed_dump', :git => 'https://github.com/firstdraft/seed_dump.git'
