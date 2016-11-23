@@ -5,4 +5,6 @@ class Student < ApplicationRecord
 
   # Validations
 
+  validates :pin, :length => { :minimum => 4, :maximum => 4 }
+
 end
