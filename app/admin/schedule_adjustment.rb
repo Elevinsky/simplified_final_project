@@ -1,5 +1,7 @@
 ActiveAdmin.register ScheduleAdjustment do
 
+ permit_params :trainer_id, :adjusted_start, :adjusted_end
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
