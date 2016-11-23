@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Break resource:
+  # CREATE
+  get "/breaks/new", :controller => "breaks", :action => "new"
+  post "/create_break", :controller => "breaks", :action => "create"
+
+  # READ
+  get "/breaks", :controller => "breaks", :action => "index"
+  get "/breaks/:id", :controller => "breaks", :action => "show"
+
+  # UPDATE
+  get "/breaks/:id/edit", :controller => "breaks", :action => "edit"
+  post "/update_break/:id", :controller => "breaks", :action => "update"
+
+  # DELETE
+  get "/delete_break/:id", :controller => "breaks", :action => "destroy"
+  #------------------------------
+
   # Routes for the Schedule_adjustment resource:
   # CREATE
   get "/schedule_adjustments/new", :controller => "schedule_adjustments", :action => "new"
