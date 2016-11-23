@@ -1,0 +1,100 @@
+<div class="page-header">
+  <h1>
+    Trainers
+    <a href="/trainers/new" class="btn btn-lg btn-success">New Trainer</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Name</th>
+        <th>Tues start hour</th>
+        <th>Tues start min</th>
+        <th>Tues start am pm</th>
+        <th>Wed start hour</th>
+        <th>Wed start min</th>
+        <th>Wed start am pm</th>
+        <th>Thur start hour</th>
+        <th>Thur start min</th>
+        <th>Thur start am pm</th>
+        <th>Fri start hour</th>
+        <th>Fri start min</th>
+        <th>Fri start am pm</th>
+        <th>Sat start hour</th>
+        <th>Sat start min</th>
+        <th>Sat start am pm</th>
+        <th>Sun start hour</th>
+        <th>Sun start min</th>
+        <th>Sun start am pm</th>
+        <th>Tues end hour</th>
+        <th>Tues end min</th>
+        <th>Tues end am pm</th>
+        <th>Wed end hour</th>
+        <th>Wed end min</th>
+        <th>Wed end am pm</th>
+        <th>Thur end hour</th>
+        <th>Thur end min</th>
+        <th>Thur end am pm</th>
+        <th>Fri end hour</th>
+        <th>Fri end min</th>
+        <th>Fri end am pm</th>
+        <th>Sat end hour</th>
+        <th>Sat end min</th>
+        <th>Sat end am pm</th>
+        <th>Sun end hour</th>
+        <th>Sun end min</th>
+        <th>Sun end am pm</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @trainers.each do |trainer| %>
+      <tr>
+        <td><%= trainer.name %></td>
+        <td><%= trainer.tues_start_hour %></td>
+        <td><%= trainer.tues_start_min %></td>
+        <td><%= trainer.tues_start_am_pm %></td>
+        <td><%= trainer.wed_start_hour %></td>
+        <td><%= trainer.wed_start_min %></td>
+        <td><%= trainer.wed_start_am_pm %></td>
+        <td><%= trainer.thur_start_hour %></td>
+        <td><%= trainer.thur_start_min %></td>
+        <td><%= trainer.thur_start_am_pm %></td>
+        <td><%= trainer.fri_start_hour %></td>
+        <td><%= trainer.fri_start_min %></td>
+        <td><%= trainer.fri_start_am_pm %></td>
+        <td><%= trainer.sat_start_hour %></td>
+        <td><%= trainer.sat_start_min %></td>
+        <td><%= trainer.sat_start_am_pm %></td>
+        <td><%= trainer.sun_start_hour %></td>
+        <td><%= trainer.sun_start_min %></td>
+        <td><%= trainer.sun_start_am_pm %></td>
+        <td><%= trainer.tues_end_hour %></td>
+        <td><%= trainer.tues_end_min %></td>
+        <td><%= trainer.tues_end_am_pm %></td>
+        <td><%= trainer.wed_end_hour %></td>
+        <td><%= trainer.wed_end_min %></td>
+        <td><%= trainer.wed_end_am_pm %></td>
+        <td><%= trainer.thur_end_hour %></td>
+        <td><%= trainer.thur_end_min %></td>
+        <td><%= trainer.thur_end_am_pm %></td>
+        <td><%= trainer.fri_end_hour %></td>
+        <td><%= trainer.fri_end_min %></td>
+        <td><%= trainer.fri_end_am_pm %></td>
+        <td><%= trainer.sat_end_hour %></td>
+        <td><%= trainer.sat_end_min %></td>
+        <td><%= trainer.sat_end_am_pm %></td>
+        <td><%= trainer.sun_end_hour %></td>
+        <td><%= trainer.sun_end_min %></td>
+        <td><%= trainer.sun_end_am_pm %></td>
+        <td>
+          <a href="/trainers/<%= trainer.id %>" class="btn btn-primary">Show</a>
+          <a href="/trainers/<%= trainer.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_trainer/<%= trainer.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

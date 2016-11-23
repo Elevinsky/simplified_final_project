@@ -1,0 +1,133 @@
+<div class="page-header">
+  <h3>Trainer #<%= @trainer.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Name</dt>
+      <dd><%= @trainer.name %></dd>
+
+      <dt>Tues start hour</dt>
+      <dd><%= @trainer.tues_start_hour %></dd>
+
+      <dt>Tues start min</dt>
+      <dd><%= @trainer.tues_start_min %></dd>
+
+      <dt>Tues start am pm</dt>
+      <dd><%= @trainer.tues_start_am_pm %></dd>
+
+      <dt>Wed start hour</dt>
+      <dd><%= @trainer.wed_start_hour %></dd>
+
+      <dt>Wed start min</dt>
+      <dd><%= @trainer.wed_start_min %></dd>
+
+      <dt>Wed start am pm</dt>
+      <dd><%= @trainer.wed_start_am_pm %></dd>
+
+      <dt>Thur start hour</dt>
+      <dd><%= @trainer.thur_start_hour %></dd>
+
+      <dt>Thur start min</dt>
+      <dd><%= @trainer.thur_start_min %></dd>
+
+      <dt>Thur start am pm</dt>
+      <dd><%= @trainer.thur_start_am_pm %></dd>
+
+      <dt>Fri start hour</dt>
+      <dd><%= @trainer.fri_start_hour %></dd>
+
+      <dt>Fri start min</dt>
+      <dd><%= @trainer.fri_start_min %></dd>
+
+      <dt>Fri start am pm</dt>
+      <dd><%= @trainer.fri_start_am_pm %></dd>
+
+      <dt>Sat start hour</dt>
+      <dd><%= @trainer.sat_start_hour %></dd>
+
+      <dt>Sat start min</dt>
+      <dd><%= @trainer.sat_start_min %></dd>
+
+      <dt>Sat start am pm</dt>
+      <dd><%= @trainer.sat_start_am_pm %></dd>
+
+      <dt>Sun start hour</dt>
+      <dd><%= @trainer.sun_start_hour %></dd>
+
+      <dt>Sun start min</dt>
+      <dd><%= @trainer.sun_start_min %></dd>
+
+      <dt>Sun start am pm</dt>
+      <dd><%= @trainer.sun_start_am_pm %></dd>
+
+      <dt>Tues end hour</dt>
+      <dd><%= @trainer.tues_end_hour %></dd>
+
+      <dt>Tues end min</dt>
+      <dd><%= @trainer.tues_end_min %></dd>
+
+      <dt>Tues end am pm</dt>
+      <dd><%= @trainer.tues_end_am_pm %></dd>
+
+      <dt>Wed end hour</dt>
+      <dd><%= @trainer.wed_end_hour %></dd>
+
+      <dt>Wed end min</dt>
+      <dd><%= @trainer.wed_end_min %></dd>
+
+      <dt>Wed end am pm</dt>
+      <dd><%= @trainer.wed_end_am_pm %></dd>
+
+      <dt>Thur end hour</dt>
+      <dd><%= @trainer.thur_end_hour %></dd>
+
+      <dt>Thur end min</dt>
+      <dd><%= @trainer.thur_end_min %></dd>
+
+      <dt>Thur end am pm</dt>
+      <dd><%= @trainer.thur_end_am_pm %></dd>
+
+      <dt>Fri end hour</dt>
+      <dd><%= @trainer.fri_end_hour %></dd>
+
+      <dt>Fri end min</dt>
+      <dd><%= @trainer.fri_end_min %></dd>
+
+      <dt>Fri end am pm</dt>
+      <dd><%= @trainer.fri_end_am_pm %></dd>
+
+      <dt>Sat end hour</dt>
+      <dd><%= @trainer.sat_end_hour %></dd>
+
+      <dt>Sat end min</dt>
+      <dd><%= @trainer.sat_end_min %></dd>
+
+      <dt>Sat end am pm</dt>
+      <dd><%= @trainer.sat_end_am_pm %></dd>
+
+      <dt>Sun end hour</dt>
+      <dd><%= @trainer.sun_end_hour %></dd>
+
+      <dt>Sun end min</dt>
+      <dd><%= @trainer.sun_end_min %></dd>
+
+      <dt>Sun end am pm</dt>
+      <dd><%= @trainer.sun_end_am_pm %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/trainers" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/trainers/<%= @trainer.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_trainer/<%= @trainer.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
