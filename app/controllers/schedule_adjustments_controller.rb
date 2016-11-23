@@ -1,6 +1,7 @@
 class ScheduleAdjustmentsController < ApplicationController
   def index
-    @schedule_adjustments = ScheduleAdjustment.page(params[:page]).per(10)
+    @q = ScheduleAdjustment.ransack(params[:q])
+    @schedule_adjustments = @q.result(:distinct => true).includes(:trainer).page(params[:page]).per(10)
 
     render("schedule_adjustments/index.html.erb")
   end

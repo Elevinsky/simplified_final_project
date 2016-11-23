@@ -1,6 +1,7 @@
 class TrainersController < ApplicationController
   def index
-    @trainers = Trainer.page(params[:page]).per(10)
+    @q = Trainer.ransack(params[:q])
+    @trainers = @q.result(:distinct => true).includes(:schedule_adjustments, :breaks, :lessons).page(params[:page]).per(10)
 
     render("trainers/index.html.erb")
   end

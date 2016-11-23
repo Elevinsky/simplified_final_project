@@ -1,6 +1,7 @@
 class BreaksController < ApplicationController
   def index
-    @breaks = Break.page(params[:page]).per(10)
+    @q = Break.ransack(params[:q])
+    @breaks = @q.result(:distinct => true).includes(:trainer).page(params[:page]).per(10)
 
     render("breaks/index.html.erb")
   end

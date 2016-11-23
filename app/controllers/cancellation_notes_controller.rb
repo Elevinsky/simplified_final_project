@@ -1,6 +1,7 @@
 class CancellationNotesController < ApplicationController
   def index
-    @cancellation_notes = CancellationNote.page(params[:page]).per(10)
+    @q = CancellationNote.ransack(params[:q])
+    @cancellation_notes = @q.result(:distinct => true).includes(:lesson).page(params[:page]).per(10)
 
     render("cancellation_notes/index.html.erb")
   end

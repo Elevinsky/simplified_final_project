@@ -1,6 +1,7 @@
 class LessonsController < ApplicationController
   def index
-    @lessons = Lesson.page(params[:page]).per(10)
+    @q = Lesson.ransack(params[:q])
+    @lessons = @q.result(:distinct => true).includes(:student, :trainer, :cancellation_note).page(params[:page]).per(10)
 
     render("lessons/index.html.erb")
   end
