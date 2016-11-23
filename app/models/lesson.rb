@@ -5,4 +5,6 @@ class Lesson < ApplicationRecord
 
   # Validations
 
+  validates :trainer_id, :presence => true
+
 end
