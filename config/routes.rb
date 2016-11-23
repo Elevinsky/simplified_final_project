@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Schedule_adjustment resource:
+  # CREATE
+  get "/schedule_adjustments/new", :controller => "schedule_adjustments", :action => "new"
+  post "/create_schedule_adjustment", :controller => "schedule_adjustments", :action => "create"
+
+  # READ
+  get "/schedule_adjustments", :controller => "schedule_adjustments", :action => "index"
+  get "/schedule_adjustments/:id", :controller => "schedule_adjustments", :action => "show"
+
+  # UPDATE
+  get "/schedule_adjustments/:id/edit", :controller => "schedule_adjustments", :action => "edit"
+  post "/update_schedule_adjustment/:id", :controller => "schedule_adjustments", :action => "update"
+
+  # DELETE
+  get "/delete_schedule_adjustment/:id", :controller => "schedule_adjustments", :action => "destroy"
+  #------------------------------
+
   # Routes for the Trainer resource:
   # CREATE
   get "/trainers/new", :controller => "trainers", :action => "new"

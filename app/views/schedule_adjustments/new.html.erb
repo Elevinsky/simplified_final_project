@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @schedule_adjustment.errors.any? %>
+  <% @schedule_adjustment.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Schedule Adjustment</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_schedule_adjustment" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for trainer_id -->
+      <div class="form-group">
+        <label for="trainer_id" class="control-label">
+          Trainer
+        </label>
+
+        <input type="text" id="trainer_id" name="trainer_id" placeholder="Trainer" class="form-control" value="<%= @schedule_adjustment.trainer_id %>">
+      </div>
+
+      <!-- Label and input for adjusted_start -->
+      <div class="form-group">
+        <label for="adjusted_start" class="control-label">
+          Adjusted start
+        </label>
+
+        <input type="text" id="adjusted_start" name="adjusted_start" placeholder="Adjusted start" class="form-control" value="<%= @schedule_adjustment.adjusted_start %>">
+      </div>
+
+      <!-- Label and input for adjusted_end -->
+      <div class="form-group">
+        <label for="adjusted_end" class="control-label">
+          Adjusted end
+        </label>
+
+        <input type="text" id="adjusted_end" name="adjusted_end" placeholder="Adjusted end" class="form-control" value="<%= @schedule_adjustment.adjusted_end %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Schedule Adjustment
+      </button>
+      or
+      <a href="/schedule_adjustments">Cancel</a>
+    </form>
+  </div>
+</div>
