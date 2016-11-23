@@ -1,6 +1,9 @@
 class Trainer < ApplicationRecord
   # Direct associations
 
+  has_many   :lessons,
+             :dependent => :destroy
+
   has_many   :breaks,
              :dependent => :destroy
 
