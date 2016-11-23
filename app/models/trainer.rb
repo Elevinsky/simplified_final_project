@@ -5,6 +5,8 @@ class Trainer < ApplicationRecord
 
   # Validations
 
+  validates :thur_start_min, :presence => true
+
   validates :tues_end_am_pm, :presence => true
 
   validates :tues_end_hour, :presence => true
