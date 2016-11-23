@@ -18,8 +18,20 @@
 
       <% @lessons.each do |lesson| %>
       <tr>
-        <td><%= lesson.trainer.name %></td>
-        <td><%= lesson.student.name %></td>
+        <td>
+          <% if lesson.trainer.present? %>
+            <a href="/trainers/<%= lesson.trainer.id %>">
+              <%= lesson.trainer.name %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if lesson.student.present? %>
+            <a href="/students/<%= lesson.student.id %>">
+              <%= lesson.student.name %>
+            </a>
+          <% end %>
+        </td>
         <td><%= lesson.lesson_time %></td>
         <td><%= lesson.checked_in %></td>
         <td>

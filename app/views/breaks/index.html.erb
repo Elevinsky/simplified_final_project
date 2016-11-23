@@ -17,7 +17,13 @@
 
       <% @breaks.each do |break| %>
       <tr>
-        <td><%= break.trainer.name %></td>
+        <td>
+          <% if break.trainer.present? %>
+            <a href="/trainers/<%= break.trainer.id %>">
+              <%= break.trainer.name %>
+            </a>
+          <% end %>
+        </td>
         <td><%= break.start %></td>
         <td><%= break.end %></td>
         <td>

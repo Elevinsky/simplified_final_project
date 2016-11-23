@@ -6,7 +6,13 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>Lesson</dt>
-      <dd><%= @cancellation_note.lesson_id %></dd>
+      <dd>
+        <% if @cancellation_note.lesson.present? %>
+          <a href="/lessons/<%= @cancellation_note.lesson_id %>">
+            <%= @cancellation_note.lesson.trainer_id %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Body</dt>
       <dd><%= @cancellation_note.body %></dd>

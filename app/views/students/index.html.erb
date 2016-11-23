@@ -19,7 +19,13 @@
       <tr>
         <td><%= student.name %></td>
         <td><%= student.pin %></td>
-        <td><%= student.user.email %></td>
+        <td>
+          <% if student.user.present? %>
+            <a href="/users/<%= student.user.id %>">
+              <%= student.user.email %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/students/<%= student.id %>" class="btn btn-primary">Show</a>
           

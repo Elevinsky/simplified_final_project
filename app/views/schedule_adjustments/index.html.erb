@@ -17,7 +17,13 @@
 
       <% @schedule_adjustments.each do |schedule_adjustment| %>
       <tr>
-        <td><%= schedule_adjustment.trainer.name %></td>
+        <td>
+          <% if schedule_adjustment.trainer.present? %>
+            <a href="/trainers/<%= schedule_adjustment.trainer.id %>">
+              <%= schedule_adjustment.trainer.name %>
+            </a>
+          <% end %>
+        </td>
         <td><%= schedule_adjustment.adjusted_start %></td>
         <td><%= schedule_adjustment.adjusted_end %></td>
         <td>

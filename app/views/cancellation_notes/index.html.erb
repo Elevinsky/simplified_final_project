@@ -16,7 +16,13 @@
 
       <% @cancellation_notes.each do |cancellation_note| %>
       <tr>
-        <td><%= cancellation_note.lesson.trainer_id %></td>
+        <td>
+          <% if cancellation_note.lesson.present? %>
+            <a href="/lessons/<%= cancellation_note.lesson.id %>">
+              <%= cancellation_note.lesson.trainer_id %>
+            </a>
+          <% end %>
+        </td>
         <td><%= cancellation_note.body %></td>
         <td>
           <a href="/cancellation_notes/<%= cancellation_note.id %>" class="btn btn-primary">Show</a>
