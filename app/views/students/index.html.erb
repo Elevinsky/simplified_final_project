@@ -19,7 +19,7 @@
       <tr>
         <td><%= student.name %></td>
         <td><%= student.pin %></td>
-        <td><%= student.user_id %></td>
+        <td><%= student.user.email %></td>
         <td>
           <a href="/students/<%= student.id %>" class="btn btn-primary">Show</a>
           <a href="/students/<%= student.id %>/edit" class="btn btn-warning">Edit</a>
