@@ -1,0 +1,30 @@
+<div class="page-header">
+  <h1>
+    Cancellation notes
+    <a href="/cancellation_notes/new" class="btn btn-lg btn-success">New Cancellation note</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Lesson</th>
+        <th>Body</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @cancellation_notes.each do |cancellation_note| %>
+      <tr>
+        <td><%= cancellation_note.lesson_id %></td>
+        <td><%= cancellation_note.body %></td>
+        <td>
+          <a href="/cancellation_notes/<%= cancellation_note.id %>" class="btn btn-primary">Show</a>
+          <a href="/cancellation_notes/<%= cancellation_note.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_cancellation_note/<%= cancellation_note.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

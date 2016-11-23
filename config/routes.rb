@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Cancellation_note resource:
+  # CREATE
+  get "/cancellation_notes/new", :controller => "cancellation_notes", :action => "new"
+  post "/create_cancellation_note", :controller => "cancellation_notes", :action => "create"
+
+  # READ
+  get "/cancellation_notes", :controller => "cancellation_notes", :action => "index"
+  get "/cancellation_notes/:id", :controller => "cancellation_notes", :action => "show"
+
+  # UPDATE
+  get "/cancellation_notes/:id/edit", :controller => "cancellation_notes", :action => "edit"
+  post "/update_cancellation_note/:id", :controller => "cancellation_notes", :action => "update"
+
+  # DELETE
+  get "/delete_cancellation_note/:id", :controller => "cancellation_notes", :action => "destroy"
+  #------------------------------
+
   # Routes for the Lesson resource:
   # CREATE
   get "/lessons/new", :controller => "lessons", :action => "new"
