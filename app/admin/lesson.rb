@@ -1,5 +1,7 @@
 ActiveAdmin.register Lesson do
 
+ permit_params :trainer_id, :student_id, :lesson_time, :checked_in
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
