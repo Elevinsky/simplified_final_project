@@ -127,13 +127,41 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>Trainer</th>
-        <th>Student</th>
-        <th>Lesson time</th>
-        <th>Checked in</th>
-        <th>Actions</th>
+        <th>Time</th>
+        <th>Tuesday <%= Chronic.parse('this tuesday').strftime('%m/%e') %></th>
+        <th>Wednesday <%= Chronic.parse('this wednesday').strftime('%m/%e') %></th>
+        <th>Thursday <%= Chronic.parse('this thursday').strftime('%m/%e') %></th>
+        <th>Friday <%= Chronic.parse('this friday').strftime('%m/%e') %></th>
+        <th>Saturday <%= Chronic.parse('this saturday').strftime('%m/%e') %></th>
+        <th>Sunday <%= Chronic.parse('this sunday').strftime('%m/%e') %></th>
       </tr>
 
+      <% @lesson_options.each do |time| %>
+      <tr>
+        <td><%= time %></td>
+        <td>
+        <% @lessons.each do |lesson| %>
+        <% if lesson.lesson_time == Chronic.parse('this tuesday 9:30') %>
+        <a href="/trainers/<%= lesson.trainer.id %>">
+          <%= lesson.student.name %>
+          </a>
+          <% end %>
+          <% end %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td>10:00</td>
+        <td>
+        <% @lessons.each do |lesson| %>
+        <% if lesson.lesson_time == Chronic.parse('this tuesday 10:00') %>
+        <a href="/trainers/<%= lesson.trainer.id %>">
+          <%= lesson.trainer.name %>
+          </a>
+          <% end %>
+          <% end %>
+        </td>
+      </tr>
       <% @lessons.each do |lesson| %>
       <tr>
         <td>
@@ -150,7 +178,7 @@
             </a>
           <% end %>
         </td>
-        <td><%= lesson.lesson_time %></td>
+        <td><%= lesson.lesson_time.strftime('%b %e, %I:%M %p %Z') %></td>
         <td><%= lesson.checked_in %></td>
         <td>
           <a href="/lessons/<%= lesson.id %>" class="btn btn-primary">Show</a>

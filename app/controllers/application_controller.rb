@@ -1,4 +1,13 @@
 class ApplicationController < ActionController::Base
+
+  around_action :set_time_zone
+
+  private
+
+  def set_time_zone
+    Time.use_zone('Central Time (US & Canada)') { yield }
+  end
+
   before_action :authenticate_user!
 
   protect_from_forgery with: :exception
@@ -12,4 +21,5 @@ class ApplicationController < ActionController::Base
 
     devise_parameter_sanitizer.permit(:account_update, :keys => [:role])
   end
+
 end

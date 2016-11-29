@@ -11,6 +11,9 @@
 <div class="page-header">
   <h3>Add Lesson</h3>
 </div>
+<%= @time %>
+<%= @cleantime %>
+<%= @chronictime %>
 
 <div class="row">
   <div class="col-md-12">
@@ -42,7 +45,7 @@
           Lesson time
         </label>
 
-        <input type="text" id="lesson_time" name="lesson_time" placeholder="Lesson time" class="form-control" value="<%= @lesson.lesson_time %>">
+        <input type="text" id="lesson_time" name="lesson_time" placeholder="Lesson time" class="form-control" value="<%= @chronictime %>">
       </div>
 
       <!-- Label and input for checked_in -->

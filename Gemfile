@@ -2,6 +2,11 @@ source 'http://rubygems.org'
 
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
+# calendar gems
+gem 'fullcalendar-rails'
+
+gem 'chronic'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 group :development do

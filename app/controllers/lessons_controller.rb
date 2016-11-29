@@ -1,5 +1,6 @@
 class LessonsController < ApplicationController
   def index
+    @lesson_options = ['9:00', '9:30']
     @q = Lesson.ransack(params[:q])
     @lessons = @q.result(:distinct => true).includes(:student, :trainer, :cancellation_note).page(params[:page]).per(10)
 
@@ -14,6 +15,10 @@ class LessonsController < ApplicationController
 
   def new
     @lesson = Lesson.new
+
+    @time = params[:id]
+    @cleantime = @time.gsub( "_", " ")
+    @chronictime = Chronic.parse(@cleantime)
 
     render("lessons/new.html.erb")
   end
