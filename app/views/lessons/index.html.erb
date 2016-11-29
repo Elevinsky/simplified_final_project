@@ -139,16 +139,73 @@
       <% @lesson_options.each do |time| %>
       <tr>
         <td><%= time %></td>
+        <!-- tuesday column -->
         <td>
+          <a href="/lessons/new/<%=Chronic.parse('this tuesday').strftime('%B_%e')%>_<%= time %>" class="btn btn-lg btn-success">New Lesson</a>
         <% @lessons.each do |lesson| %>
-        <% if lesson.lesson_time == Chronic.parse('this tuesday 9:30') %>
+        <% if lesson.lesson_time == Chronic.parse('this tuesday time') %>
         <a href="/trainers/<%= lesson.trainer.id %>">
           <%= lesson.student.name %>
           </a>
           <% end %>
           <% end %>
-          <% end %>
         </td>
+        <!-- wednesday column -->
+        <td>
+          <a href="/lessons/new/<%=Chronic.parse('this wednesday').strftime('%B_%e')%>_<%= time %>" class="btn btn-lg btn-success">New Lesson</a>
+        <% @lessons.each do |lesson| %>
+        <% if lesson.lesson_time == Chronic.parse('this wednesday time') %>
+        <a href="/trainers/<%= lesson.trainer.id %>">
+          <%= lesson.student.name %>
+          </a>
+          <% end %>
+          <% end %>
+          </td>
+          <!-- thursday column -->
+          <td>
+            <a href="/lessons/new/<%=Chronic.parse('this thursday').strftime('%B_%e')%>_<%= time %>" class="btn btn-lg btn-success">New Lesson</a>
+          <% @lessons.each do |lesson| %>
+          <% if lesson.lesson_time == Chronic.parse('this thursday time') %>
+          <a href="/trainers/<%= lesson.trainer.id %>">
+            <%= lesson.student.name %>
+            </a>
+            <% end %>
+            <% end %>
+          </td>
+          <!-- friday column -->
+          <td>
+            <a href="/lessons/new/<%=Chronic.parse('this friday').strftime('%B_%e')%>_<%= time %>" class="btn btn-lg btn-success">New Lesson</a>
+          <% @lessons.each do |lesson| %>
+          <% if lesson.lesson_time == Chronic.parse('this friday time') %>
+          <a href="/trainers/<%= lesson.trainer.id %>">
+            <%= lesson.student.name %>
+            </a>
+            <% end %>
+            <% end %>
+          </td>
+          <!-- saturday column -->
+          <td>
+            <a href="/lessons/new/<%=Chronic.parse('this saturday').strftime('%B_%e')%>_<%= time %>" class="btn btn-lg btn-success">New Lesson</a>
+          <% @lessons.each do |lesson| %>
+          <% if lesson.lesson_time == Chronic.parse('this saturday time') %>
+          <a href="/trainers/<%= lesson.trainer.id %>">
+            <%= lesson.student.name %>
+            </a>
+            <% end %>
+            <% end %>
+          </td>
+          <!-- sunday column -->
+          <td>
+            <a href="/lessons/new/<%=Chronic.parse('this sunday').strftime('%B_%e')%>_<%= time %>" class="btn btn-lg btn-success">New Lesson</a>
+          <% @lessons.each do |lesson| %>
+          <% if lesson.lesson_time == Chronic.parse('this sunday time') %>
+          <a href="/trainers/<%= lesson.trainer.id %>">
+            <%= lesson.student.name %>
+            </a>
+            <% end %>
+            <% end %>
+            <% end %>
+          </td>
       </tr>
       <tr>
         <td>10:00</td>
