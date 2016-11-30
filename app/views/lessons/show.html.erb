@@ -14,20 +14,17 @@
         <% end %>
       </dd>
 
+      <dt>Lesson time</dt>
+      <dd><%= @lesson.lesson_time %></dd>
+
       <dt>Student</dt>
       <dd>
         <% if @lesson.student.present? %>
           <a href="/students/<%= @lesson.student_id %>">
-            <%= @lesson.student.name %>
+            <%= @lesson.student.created_at %>
           </a>
         <% end %>
       </dd>
-
-      <dt>Lesson time</dt>
-      <dd><%= @lesson.lesson_time %></dd>
-
-      <dt>Checked in</dt>
-      <dd><%= @lesson.checked_in %></dd>
 
     </dl>
 
@@ -35,12 +32,14 @@
       <a href="/lessons" class="btn btn-primary">
         Back
       </a>
-      <a href="/lessons/<%= @lesson.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_lesson/<%= @lesson.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+      <% if current_user == @lesson.student %>
+        <a href="/lessons/<%= @lesson.id %>/edit" class="btn btn-warning">
+          Edit
+        </a>
+        <a href="/delete_lesson/<%= @lesson.id %>" class="btn btn-danger" rel="nofollow">
+          Delete
+        </a>
+      <% end %>
     </div>
   </div>
 </div>

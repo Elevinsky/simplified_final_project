@@ -1,6 +1,15 @@
 class LessonsController < ApplicationController
+  before_action :current_user_must_be_lesson_user, :only => [:show, :edit, :update, :destroy]
+
+  def current_user_must_be_lesson_student
+    lesson = Lesson.find(params[:id])
+
+    unless current_user == lesson.student
+      redirect_to :back, :alert => "You are not authorized for that."
+    end
+  end
+
   def index
-    @lesson_options = ['9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM', '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM', '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM']
     @q = Lesson.ransack(params[:q])
     @lessons = @q.result(:distinct => true).includes(:student, :trainer, :cancellation_note).page(params[:page]).per(10)
 
@@ -16,10 +25,6 @@ class LessonsController < ApplicationController
   def new
     @lesson = Lesson.new
 
-    @time = params[:id]
-    @cleantime = @time.gsub( "_", " ")
-    @chronictime = Chronic.parse(@cleantime)
-
     render("lessons/new.html.erb")
   end
 
@@ -27,9 +32,8 @@ class LessonsController < ApplicationController
     @lesson = Lesson.new
 
     @lesson.trainer_id = params[:trainer_id]
-    @lesson.student_id = params[:student_id]
     @lesson.lesson_time = params[:lesson_time]
-    @lesson.checked_in = params[:checked_in]
+    @lesson.student_id = params[:student_id]
 
     save_status = @lesson.save
 
@@ -57,9 +61,8 @@ class LessonsController < ApplicationController
     @lesson = Lesson.find(params[:id])
 
     @lesson.trainer_id = params[:trainer_id]
-    @lesson.student_id = params[:student_id]
     @lesson.lesson_time = params[:lesson_time]
-    @lesson.checked_in = params[:checked_in]
+    @lesson.student_id = params[:student_id]
 
     save_status = @lesson.save
 
