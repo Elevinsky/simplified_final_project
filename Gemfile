@@ -8,6 +8,7 @@ group :development do
   gem "wdm" if Gem.win_platform?
 end
 
+gem 'chronic'
 
 group :production do
   gem "pg"

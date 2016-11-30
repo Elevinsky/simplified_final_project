@@ -11,6 +11,9 @@
 <div class="page-header">
   <h3>Add Lesson</h3>
 </div>
+<%= @time %>
+<%= @cleantime %>
+<%= @chronictime %>
 
 <div class="row">
   <div class="col-md-12">
@@ -27,17 +30,24 @@
         <%= select_tag(:trainer_id, options_from_collection_for_select(Trainer.all, :id, :name, @lesson.trainer_id), :class => "form-control") %>
       </div>
 
+      <!-- Label and input for student_id -->
+      <div class="form-group">
+        <label for="student_id" class="control-label">
+          Student
+        </label>
+
+        <%= select_tag(:student_id, options_from_collection_for_select(Student.all, :id, :name, @lesson.student_id), :class => "form-control") %>
+      </div>
+
       <!-- Label and input for lesson_time -->
       <div class="form-group">
         <label for="lesson_time" class="control-label">
           Lesson time
         </label>
 
-        <input type="text" id="lesson_time" name="lesson_time" placeholder="Lesson time" class="form-control" value="<%= @lesson.lesson_time %>">
+        <input type="text" id="lesson_time" name="lesson_time" placeholder="Lesson time" class="form-control" value="<%= @chronictime %>">
       </div>
 
-      <!-- Label and input for student_id -->
-      <input type="hidden" name="student_id" value="<%= current_user.id %>">
 
       <button class="btn btn-success">
         Create Lesson
