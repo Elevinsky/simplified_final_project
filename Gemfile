@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -7,6 +7,7 @@ group :development do
   gem "sqlite3"
   gem "wdm" if Gem.win_platform?
 end
+
 
 group :production do
   gem "pg"
