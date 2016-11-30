@@ -3,6 +3,414 @@
     Trainers
     <a href="/trainers/new" class="btn btn-lg btn-success">New Trainer</a>
   </h1>
+</div><div class="row mb-1">
+  <div class="col-md-12">
+    <%= search_form_for @q, :class => "collapse", :id => "trainers_filters" do |f| %>
+      <p class="lead">Narrow results:</p>
+
+        <div class="form-group">
+    <%= f.label :name_cont, "Name contains" %>
+    <%= f.text_field :name_cont, :class => "form-control", :placeholder => "Name contains" %>
+  </div>
+
+<div class="form-group">
+    <%= f.label :sun_end_am_pm_cont, "Sun end am pm contains" %>
+    <%= f.text_field :sun_end_am_pm_cont, :class => "form-control", :placeholder => "Sun end am pm contains" %>
+  </div>
+
+<div class="form-group">
+  <%= f.label :sun_end_min, "Sun end min" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :sun_end_min_gteq, :class => "form-control", :placeholder => "Sun end min greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :sun_end_min_lteq, :class => "form-control", :placeholder => "Sun end min less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :sun_end_hour, "Sun end hour" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :sun_end_hour_gteq, :class => "form-control", :placeholder => "Sun end hour greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :sun_end_hour_lteq, :class => "form-control", :placeholder => "Sun end hour less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+    <%= f.label :sat_end_am_pm_cont, "Sat end am pm contains" %>
+    <%= f.text_field :sat_end_am_pm_cont, :class => "form-control", :placeholder => "Sat end am pm contains" %>
+  </div>
+
+<div class="form-group">
+  <%= f.label :sat_end_min, "Sat end min" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :sat_end_min_gteq, :class => "form-control", :placeholder => "Sat end min greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :sat_end_min_lteq, :class => "form-control", :placeholder => "Sat end min less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :sat_end_hour, "Sat end hour" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :sat_end_hour_gteq, :class => "form-control", :placeholder => "Sat end hour greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :sat_end_hour_lteq, :class => "form-control", :placeholder => "Sat end hour less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+    <%= f.label :fri_end_am_pm_cont, "Fri end am pm contains" %>
+    <%= f.text_field :fri_end_am_pm_cont, :class => "form-control", :placeholder => "Fri end am pm contains" %>
+  </div>
+
+<div class="form-group">
+  <%= f.label :fri_end_min, "Fri end min" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :fri_end_min_gteq, :class => "form-control", :placeholder => "Fri end min greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :fri_end_min_lteq, :class => "form-control", :placeholder => "Fri end min less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :fri_end_hour, "Fri end hour" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :fri_end_hour_gteq, :class => "form-control", :placeholder => "Fri end hour greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :fri_end_hour_lteq, :class => "form-control", :placeholder => "Fri end hour less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+    <%= f.label :thur_end_am_pm_cont, "Thur end am pm contains" %>
+    <%= f.text_field :thur_end_am_pm_cont, :class => "form-control", :placeholder => "Thur end am pm contains" %>
+  </div>
+
+<div class="form-group">
+  <%= f.label :thur_end_min, "Thur end min" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :thur_end_min_gteq, :class => "form-control", :placeholder => "Thur end min greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :thur_end_min_lteq, :class => "form-control", :placeholder => "Thur end min less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :thur_end_hour, "Thur end hour" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :thur_end_hour_gteq, :class => "form-control", :placeholder => "Thur end hour greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :thur_end_hour_lteq, :class => "form-control", :placeholder => "Thur end hour less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+    <%= f.label :wed_end_am_pm_cont, "Wed end am pm contains" %>
+    <%= f.text_field :wed_end_am_pm_cont, :class => "form-control", :placeholder => "Wed end am pm contains" %>
+  </div>
+
+<div class="form-group">
+  <%= f.label :wed_end_min, "Wed end min" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :wed_end_min_gteq, :class => "form-control", :placeholder => "Wed end min greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :wed_end_min_lteq, :class => "form-control", :placeholder => "Wed end min less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :wed_end_hour, "Wed end hour" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :wed_end_hour_gteq, :class => "form-control", :placeholder => "Wed end hour greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :wed_end_hour_lteq, :class => "form-control", :placeholder => "Wed end hour less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+    <%= f.label :tues_end_am_pm_cont, "Tues end am pm contains" %>
+    <%= f.text_field :tues_end_am_pm_cont, :class => "form-control", :placeholder => "Tues end am pm contains" %>
+  </div>
+
+<div class="form-group">
+  <%= f.label :tues_end_min, "Tues end min" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :tues_end_min_gteq, :class => "form-control", :placeholder => "Tues end min greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :tues_end_min_lteq, :class => "form-control", :placeholder => "Tues end min less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :tues_end_hour, "Tues end hour" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :tues_end_hour_gteq, :class => "form-control", :placeholder => "Tues end hour greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :tues_end_hour_lteq, :class => "form-control", :placeholder => "Tues end hour less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+    <%= f.label :sun_start_am_pm_cont, "Sun start am pm contains" %>
+    <%= f.text_field :sun_start_am_pm_cont, :class => "form-control", :placeholder => "Sun start am pm contains" %>
+  </div>
+
+<div class="form-group">
+  <%= f.label :sun_start_min, "Sun start min" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :sun_start_min_gteq, :class => "form-control", :placeholder => "Sun start min greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :sun_start_min_lteq, :class => "form-control", :placeholder => "Sun start min less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :sun_start_hour, "Sun start hour" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :sun_start_hour_gteq, :class => "form-control", :placeholder => "Sun start hour greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :sun_start_hour_lteq, :class => "form-control", :placeholder => "Sun start hour less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+    <%= f.label :sat_start_am_pm_cont, "Sat start am pm contains" %>
+    <%= f.text_field :sat_start_am_pm_cont, :class => "form-control", :placeholder => "Sat start am pm contains" %>
+  </div>
+
+<div class="form-group">
+  <%= f.label :sat_start_min, "Sat start min" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :sat_start_min_gteq, :class => "form-control", :placeholder => "Sat start min greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :sat_start_min_lteq, :class => "form-control", :placeholder => "Sat start min less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :sat_start_hour, "Sat start hour" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :sat_start_hour_gteq, :class => "form-control", :placeholder => "Sat start hour greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :sat_start_hour_lteq, :class => "form-control", :placeholder => "Sat start hour less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+    <%= f.label :fri_start_am_pm_cont, "Fri start am pm contains" %>
+    <%= f.text_field :fri_start_am_pm_cont, :class => "form-control", :placeholder => "Fri start am pm contains" %>
+  </div>
+
+<div class="form-group">
+  <%= f.label :fri_start_min, "Fri start min" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :fri_start_min_gteq, :class => "form-control", :placeholder => "Fri start min greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :fri_start_min_lteq, :class => "form-control", :placeholder => "Fri start min less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :fri_start_hour, "Fri start hour" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :fri_start_hour_gteq, :class => "form-control", :placeholder => "Fri start hour greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :fri_start_hour_lteq, :class => "form-control", :placeholder => "Fri start hour less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+    <%= f.label :thur_start_am_pm_cont, "Thur start am pm contains" %>
+    <%= f.text_field :thur_start_am_pm_cont, :class => "form-control", :placeholder => "Thur start am pm contains" %>
+  </div>
+
+<div class="form-group">
+  <%= f.label :thur_start_min, "Thur start min" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :thur_start_min_gteq, :class => "form-control", :placeholder => "Thur start min greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :thur_start_min_lteq, :class => "form-control", :placeholder => "Thur start min less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :thur_start_hour, "Thur start hour" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :thur_start_hour_gteq, :class => "form-control", :placeholder => "Thur start hour greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :thur_start_hour_lteq, :class => "form-control", :placeholder => "Thur start hour less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+    <%= f.label :wed_start_am_pm_cont, "Wed start am pm contains" %>
+    <%= f.text_field :wed_start_am_pm_cont, :class => "form-control", :placeholder => "Wed start am pm contains" %>
+  </div>
+
+<div class="form-group">
+  <%= f.label :wed_start_min, "Wed start min" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :wed_start_min_gteq, :class => "form-control", :placeholder => "Wed start min greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :wed_start_min_lteq, :class => "form-control", :placeholder => "Wed start min less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :wed_start_hour, "Wed start hour" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :wed_start_hour_gteq, :class => "form-control", :placeholder => "Wed start hour greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :wed_start_hour_lteq, :class => "form-control", :placeholder => "Wed start hour less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+    <%= f.label :tues_start_am_pm_cont, "Tues start am pm contains" %>
+    <%= f.text_field :tues_start_am_pm_cont, :class => "form-control", :placeholder => "Tues start am pm contains" %>
+  </div>
+
+<div class="form-group">
+  <%= f.label :tues_start_min, "Tues start min" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :tues_start_min_gteq, :class => "form-control", :placeholder => "Tues start min greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :tues_start_min_lteq, :class => "form-control", :placeholder => "Tues start min less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :tues_start_hour, "Tues start hour" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :tues_start_hour_gteq, :class => "form-control", :placeholder => "Tues start hour greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :tues_start_hour_lteq, :class => "form-control", :placeholder => "Tues start hour less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+          <%= f.label :created_at, "Created at" %>
+          <div class="row">
+            <div class='col-md-6 mb-1'>
+              <div class='input-group date' id='created_atgteqPicker'>
+                  <%= f.text_field :created_at_gteq, :class => "form-control", :placeholder => "Created at greater than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+
+            <div class='col-md-6'>
+              <div class='input-group date' id='created_atlteqPicker'>
+                  <%= f.text_field :created_at_lteq, :class => "form-control", :placeholder => "Created at less than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+          </div>
+      </div>
+      <script type="text/javascript">
+          $(function () {
+              $('#created_atgteqPicker').datetimepicker({
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#created_atlteqPicker').datetimepicker({
+                  useCurrent: false,
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#created_atgteqPicker').on("dp.change", function (e) {
+                  $('#created_atlteqPicker').data("DateTimePicker").minDate(e.date);
+              });
+              $('#created_atlteqPicker').on("dp.change", function (e) {
+                  $('#created_atgteqPicker').data("DateTimePicker").maxDate(e.date);
+              });
+          });
+      </script>
+
+        
+
+      <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
+
+      <a href="/trainers" class="btn btn-default btn-block mb-1">Clear filters</a>
+    <% end %>
+    <a class="btn btn-default btn-block mb-1" data-toggle="collapse" href="#trainers_filters">
+      Show Filters
+    </a>
+  </div>
 </div>
 
 <div class="row">
@@ -10,12 +418,84 @@
     <table class="table table-striped table-hover">
       <tr>
         <th>Name</th>
+        <th>Tues start hour</th>
+        <th>Tues start min</th>
+        <th>Tues start am pm</th>
+        <th>Wed start hour</th>
+        <th>Wed start min</th>
+        <th>Wed start am pm</th>
+        <th>Thur start hour</th>
+        <th>Thur start min</th>
+        <th>Thur start am pm</th>
+        <th>Fri start hour</th>
+        <th>Fri start min</th>
+        <th>Fri start am pm</th>
+        <th>Sat start hour</th>
+        <th>Sat start min</th>
+        <th>Sat start am pm</th>
+        <th>Sun start hour</th>
+        <th>Sun start min</th>
+        <th>Sun start am pm</th>
+        <th>Tues end hour</th>
+        <th>Tues end min</th>
+        <th>Tues end am pm</th>
+        <th>Wed end hour</th>
+        <th>Wed end min</th>
+        <th>Wed end am pm</th>
+        <th>Thur end hour</th>
+        <th>Thur end min</th>
+        <th>Thur end am pm</th>
+        <th>Fri end hour</th>
+        <th>Fri end min</th>
+        <th>Fri end am pm</th>
+        <th>Sat end hour</th>
+        <th>Sat end min</th>
+        <th>Sat end am pm</th>
+        <th>Sun end hour</th>
+        <th>Sun end min</th>
+        <th>Sun end am pm</th>
         <th>Actions</th>
       </tr>
 
       <% @trainers.each do |trainer| %>
       <tr>
         <td><%= trainer.name %></td>
+        <td><%= trainer.tues_start_hour %></td>
+        <td><%= trainer.tues_start_min %></td>
+        <td><%= trainer.tues_start_am_pm %></td>
+        <td><%= trainer.wed_start_hour %></td>
+        <td><%= trainer.wed_start_min %></td>
+        <td><%= trainer.wed_start_am_pm %></td>
+        <td><%= trainer.thur_start_hour %></td>
+        <td><%= trainer.thur_start_min %></td>
+        <td><%= trainer.thur_start_am_pm %></td>
+        <td><%= trainer.fri_start_hour %></td>
+        <td><%= trainer.fri_start_min %></td>
+        <td><%= trainer.fri_start_am_pm %></td>
+        <td><%= trainer.sat_start_hour %></td>
+        <td><%= trainer.sat_start_min %></td>
+        <td><%= trainer.sat_start_am_pm %></td>
+        <td><%= trainer.sun_start_hour %></td>
+        <td><%= trainer.sun_start_min %></td>
+        <td><%= trainer.sun_start_am_pm %></td>
+        <td><%= trainer.tues_end_hour %></td>
+        <td><%= trainer.tues_end_min %></td>
+        <td><%= trainer.tues_end_am_pm %></td>
+        <td><%= trainer.wed_end_hour %></td>
+        <td><%= trainer.wed_end_min %></td>
+        <td><%= trainer.wed_end_am_pm %></td>
+        <td><%= trainer.thur_end_hour %></td>
+        <td><%= trainer.thur_end_min %></td>
+        <td><%= trainer.thur_end_am_pm %></td>
+        <td><%= trainer.fri_end_hour %></td>
+        <td><%= trainer.fri_end_min %></td>
+        <td><%= trainer.fri_end_am_pm %></td>
+        <td><%= trainer.sat_end_hour %></td>
+        <td><%= trainer.sat_end_min %></td>
+        <td><%= trainer.sat_end_am_pm %></td>
+        <td><%= trainer.sun_end_hour %></td>
+        <td><%= trainer.sun_end_min %></td>
+        <td><%= trainer.sun_end_am_pm %></td>
         <td>
           <a href="/trainers/<%= trainer.id %>" class="btn btn-primary">Show</a>
           <a href="/trainers/<%= trainer.id %>/edit" class="btn btn-warning">Edit</a>

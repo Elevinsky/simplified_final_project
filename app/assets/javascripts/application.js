@@ -14,6 +14,4 @@
 //= require jquery_ujs
 //= require moment
 //= require bootstrap-datetimepicker
-//= require fullcalendar
-
-$('#calendar').fullCalendar({});
+//= require_tree .

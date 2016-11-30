@@ -5,20 +5,17 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
+      <dt>Role</dt>
+      <dd><%= @student.role %></dd>
+
       <dt>Name</dt>
       <dd><%= @student.name %></dd>
 
-      <dt>Pin</dt>
-      <dd><%= @student.pin %></dd>
+      <dt>Email</dt>
+      <dd><%= @student.email %></dd>
 
-      <dt>User</dt>
-      <dd>
-        <% if @student.user.present? %>
-          <a href="/users/<%= @student.user_id %>">
-            <%= @student.user.email %>
-          </a>
-        <% end %>
-      </dd>
+      <dt>Password</dt>
+      <dd><%= @student.password %></dd>
 
     </dl>
 
@@ -26,14 +23,6 @@
       <a href="/students" class="btn btn-primary">
         Back
       </a>
-      <% if current_user == @student.user %>
-        <a href="/students/<%= @student.id %>/edit" class="btn btn-warning">
-          Edit
-        </a>
-        <a href="/delete_student/<%= @student.id %>" class="btn btn-danger" rel="nofollow">
-          Delete
-        </a>
-      <% end %>
     </div>
   </div>
 </div>
@@ -56,55 +45,17 @@
             <a href="/lessons/<%= lesson.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <a href="/lessons/<%= lesson.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_lesson/<%= lesson.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
+            <%if current_user == lesson.student %>
+              <a href="/lessons/<%= lesson.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+              <a href="/delete_lesson/<%= lesson.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            <% end %>
           </div>
         </li>
       <% end %>
-
-      <li class="list-group-item">
-        <form action="/create_lesson" method="post">
-      <!-- Hidden input for authenticity token to protect from forgery -->
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-
-      <!-- Label and input for trainer_id -->
-      <div class="form-group">
-        <label for="trainer_id" class="control-label">
-          Trainer
-        </label>
-
-        <%= select_tag(:trainer_id, options_from_collection_for_select(Trainer.all, :id, :name), :class => "form-control") %>
-      </div>
-
-      <!-- Label and input for student_id -->
-      <input type="hidden" name="student_id" value="<%= @student.id %>">
-
-      <!-- Label and input for lesson_time -->
-      <div class="form-group">
-        <label for="lesson_time" class="control-label">
-          Lesson time
-        </label>
-
-        <input type="text" id="lesson_time" name="lesson_time" placeholder="Lesson time" class="form-control" value="">
-      </div>
-
-      <!-- Label and input for checked_in -->
-      <div class="checkbox">
-        <label for="checked_in">
-          <input type="checkbox" id="checked_in" name="checked_in" value="1" <%= "checked" if @lesson.checked_in %>>
-          Checked in
-        </label>
-      </div>
-
-      <button class="btn btn-block btn-success">
-        Create Lesson
-      </button>
-    </form>
-      </li>
     </ul>
   </div>
 </div>
