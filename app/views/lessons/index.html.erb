@@ -3,9 +3,22 @@
     <a <a href="/lessons">Perfecta Farm Lesson Schedule </a>
   </h1>
 </div>
+
+<% if @week == nil %>
+<a href="/lessons/1" class="btn btn-lg btn-success">Next week</a>
+<%elsif @week == '1' %>
+<a href="/lessons" class="btn btn-lg btn-success">Last week</a>
+<a href="/lessons/<%= @week.to_i + 1 %>" class="btn btn-lg btn-success">Next week</a>
+<%else %>
+<a href="/lessons/<%= @week.to_i - 1 %>" class="btn btn-lg btn-success">Last week</a>
+<a href="/lessons/<%= @week.to_i + 1 %>" class="btn btn-lg btn-success">Next week</a>
+<% end %>
+
+
 <div class="row">
   <div class="col-md-12">
     <table class="table table-striped table-hover">
+      <% if @week == nil %>
       <tr>
         <th>Time</th>
         <th>Tuesday <%= Chronic.parse('tuesday of this week').strftime('%m/%e') %></th>
@@ -33,6 +46,91 @@
         </td>
         <% end %>
       </tr>
+      <% elsif @week == '1' %>
+      <tr>
+        <th>Time</th>
+        <th>Tuesday <%= Chronic.parse('tuesday of next week').strftime('%m/%e') %></th>
+        <th>Wednesday <%= Chronic.parse('wednesday of next week').strftime('%m/%e') %></th>
+        <th>Thursday <%= Chronic.parse('thursday of next week').strftime('%m/%e') %></th>
+        <th>Friday <%= Chronic.parse('friday of next week').strftime('%m/%e') %></th>
+        <th>Saturday <%= Chronic.parse('saturday of next week').strftime('%m/%e') %></th>
+        <th>Sunday <%= Chronic.parse('sunday of next week').strftime('%m/%e') %></th>
+      </tr>
+
+      <% @lesson_options.each do |time| %>
+      <tr>
+        <td><%= time %></td>
+      <% @weekday.each do |day| %>
+        <td>
+          <a href="/lessons/new/<%=Chronic.parse("#{day} of next week").strftime('%B_%e')%>_<%=time%>" class="btn btn-lg btn-success">+</a>
+        <% @lessons.each do |lesson| %>
+        <% if lesson.lesson_time == Chronic.parse("next week #{day} at #{time} ") %>
+        <a href="/trainers/<%= lesson.trainer.id %>">
+          <%= lesson.student.name %>
+          </a>
+          <% end %>
+          <% end %>
+          <% end %>
+        </td>
+        <% end %>
+      </tr>
+      <% elsif @week == '2' %>
+      <tr>
+        <th>Time</th>
+        <th>Tuesday <%= Chronic.parse('2 weeks from now tuesday').strftime('%m/%e') %></th>
+        <th>Wednesday <%= Chronic.parse('2 weeks from now wednesday').strftime('%m/%e') %></th>
+        <th>Thursday <%= Chronic.parse('2 weeks from now thursday').strftime('%m/%e') %></th>
+        <th>Friday <%= Chronic.parse('2 weeks from now friday').strftime('%m/%e') %></th>
+        <th>Saturday <%= Chronic.parse('2 weeks from now saturday').strftime('%m/%e') %></th>
+        <th>Sunday <%= Chronic.parse('2 weeks from now sunday').strftime('%m/%e') %></th>
+      </tr>
+
+      <% @lesson_options.each do |time| %>
+      <tr>
+        <td><%= time %></td>
+      <% @weekday.each do |day| %>
+        <td>
+          <a href="/lessons/new/<%=Chronic.parse("2 weeks from now #{day} ").strftime('%B_%e')%>_<%=time%>" class="btn btn-lg btn-success">+</a>
+        <% @lessons.each do |lesson| %>
+        <% if lesson.lesson_time == Chronic.parse("2 weeks from now #{day} at #{time} ") %>
+        <a href="/trainers/<%= lesson.trainer.id %>">
+          <%= lesson.student.name %>
+          </a>
+          <% end %>
+          <% end %>
+          <% end %>
+        </td>
+        <% end %>
+      </tr>
+      <% else %>
+      <tr>
+        <th>Time</th>
+        <th>Tuesday <%= Chronic.parse("#{@week} weeks from now tuesday").strftime('%m/%e') %></th>
+        <th>Wednesday <%= Chronic.parse("#{@week} weeks from now wednesday").strftime('%m/%e') %></th>
+        <th>Thursday <%= Chronic.parse("#{@week}  weeks from now thursday").strftime('%m/%e') %></th>
+        <th>Friday <%= Chronic.parse("#{@week} weeks from now friday").strftime('%m/%e') %></th>
+        <th>Saturday <%= Chronic.parse("#{@week} weeks from now saturday").strftime('%m/%e') %></th>
+        <th>Sunday <%= Chronic.parse("#{@week} weeks from now sunday").strftime('%m/%e') %></th>
+      </tr>
+
+      <% @lesson_options.each do |time| %>
+      <tr>
+        <td><%= time %></td>
+      <% @weekday.each do |day| %>
+        <td>
+          <a href="/lessons/new/<%=Chronic.parse("#{@week} weeks from now #{day} ").strftime('%B_%e')%>_<%=time%>" class="btn btn-lg btn-success">+</a>
+        <% @lessons.each do |lesson| %>
+        <% if lesson.lesson_time == Chronic.parse("#{@week} weeks from now #{day} at #{time} ") %>
+        <a href="/trainers/<%= lesson.trainer.id %>">
+          <%= lesson.student.name %>
+          </a>
+          <% end %>
+          <% end %>
+          <% end %>
+        </td>
+        <% end %>
+      </tr>
+      <% end %>
 
     </table>
     <%= paginate @lessons, theme: 'twitter-bootstrap-4' %>

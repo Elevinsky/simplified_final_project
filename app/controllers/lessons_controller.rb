@@ -15,6 +15,7 @@ class LessonsController < ApplicationController
     @q = Lesson.ransack(params[:q])
     @lessons = @q.result(:distinct => true).includes(:student, :trainer, :cancellation_note).page(params[:page]).per(10)
 
+    @week = params[:id]
     render("lessons/index.html.erb")
   end
 
