@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  root :to => "trainers#index"
+  root :to => "lessons#index"
   # Routes for the Cancellation_note resource:
   # CREATE
   get "/cancellation_notes/new", :controller => "cancellation_notes", :action => "new"
