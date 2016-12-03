@@ -39,9 +39,10 @@
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
+      <% if current_student != nil %>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/cancellation_notes">Cancellation Notes</a></li>
+          <% if current_student.name == 'Perfecta Farm' %>
           <li><a href="/lessons">Lessons</a></li>
           <li><a href="/breaks">Breaks</a></li>
           <li><a href="/schedule_adjustments">Schedule Adjustments</a></li>
@@ -49,12 +50,18 @@
           <li><a href="/students">Students</a></li>
           <li><a href="/rails/info">Sitemap</a></li>
         </ul>
+        <%else%>
+        <ul class="nav navbar-nav">
+          <li><a href="/lessons">Lessons</a></li>
+          <li><a href="/my_lessons/ <%=current_student.id%>">Lessons</a></li>
+        </ul>
+        <%end%>
 
         <ul class="nav navbar-nav navbar-right">
           <% if current_student.present? %>
             <li>
               <a href="/students/edit">
-                <%= current_student.created_at %>
+                <%= current_student.name %>
               </a>
             </li>
 
@@ -78,6 +85,7 @@
           <% end %>
         </ul>
       </div><!-- /.navbar-collapse -->
+      <%end%>
     </div>
   </nav>
 
