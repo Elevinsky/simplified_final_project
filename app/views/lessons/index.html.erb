@@ -4,6 +4,7 @@
   </h1>
 </div>
 
+<%= Lesson.where({:student => current_student.id, :lesson_time => Chronic.parse("this week thursday at 10:00 AM") }).any? %>
 <% if @week == nil %>
 <a href="/lessons/1" class="btn btn-lg btn-success">Next week</a>
 <%elsif @week == '1' %>
@@ -34,11 +35,15 @@
         <td><%= time %></td>
       <% @weekday.each do |day| %>
         <td>
+          <% if Lesson.where({:student => current_student.id, :lesson_time => Chronic.parse("this week #{day} at #{time}") }).any? == false %>
           <a href="/lessons/new/<%=Chronic.parse("#{day} of this week").strftime('%B_%e')%>_<%=time%>" class="btn btn-lg btn-success">+</a>
+          <%else%>
+          <a href="/lessons/new/<%=Chronic.parse("#{day} of this week").strftime('%B_%e')%>_<%=time%>" class="btn btn-lg btn-warning">-</a>
+          <%end%>
         <% @lessons.each do |lesson| %>
-        <% if lesson.lesson_time == Chronic.parse("this week #{day} at #{time} ") %>
+        <% if lesson.lesson_time == Chronic.parse("this week #{day} at #{time}") %>
         <a href="/trainers/<%= lesson.trainer.id %>">
-          <%= lesson.student.name %>
+          <%= lesson.trainer.name %>- <%= lesson.student.name %>
           </a>
           <% end %>
           <% end %>
@@ -62,37 +67,13 @@
         <td><%= time %></td>
       <% @weekday.each do |day| %>
         <td>
+          <% if Lesson.where({:student => current_student.id, :lesson_time => Chronic.parse("next week #{day} at #{time}") }).any? == false %>
           <a href="/lessons/new/<%=Chronic.parse("#{day} of next week").strftime('%B_%e')%>_<%=time%>" class="btn btn-lg btn-success">+</a>
+          <%else%>
+          <a href="/lessons/new/<%=Chronic.parse("#{day} of next week").strftime('%B_%e')%>_<%=time%>" class="btn btn-lg btn-warning">-</a>
+          <%end%>
         <% @lessons.each do |lesson| %>
         <% if lesson.lesson_time == Chronic.parse("next week #{day} at #{time} ") %>
-        <a href="/trainers/<%= lesson.trainer.id %>">
-          <%= lesson.student.name %>
-          </a>
-          <% end %>
-          <% end %>
-          <% end %>
-        </td>
-        <% end %>
-      </tr>
-      <% elsif @week == '2' %>
-      <tr>
-        <th>Time</th>
-        <th>Tuesday <%= Chronic.parse('2 weeks from now tuesday').strftime('%m/%e') %></th>
-        <th>Wednesday <%= Chronic.parse('2 weeks from now wednesday').strftime('%m/%e') %></th>
-        <th>Thursday <%= Chronic.parse('2 weeks from now thursday').strftime('%m/%e') %></th>
-        <th>Friday <%= Chronic.parse('2 weeks from now friday').strftime('%m/%e') %></th>
-        <th>Saturday <%= Chronic.parse('2 weeks from now saturday').strftime('%m/%e') %></th>
-        <th>Sunday <%= Chronic.parse('2 weeks from now sunday').strftime('%m/%e') %></th>
-      </tr>
-
-      <% @lesson_options.each do |time| %>
-      <tr>
-        <td><%= time %></td>
-      <% @weekday.each do |day| %>
-        <td>
-          <a href="/lessons/new/<%=Chronic.parse("2 weeks from now #{day} ").strftime('%B_%e')%>_<%=time%>" class="btn btn-lg btn-success">+</a>
-        <% @lessons.each do |lesson| %>
-        <% if lesson.lesson_time == Chronic.parse("2 weeks from now #{day} at #{time} ") %>
         <a href="/trainers/<%= lesson.trainer.id %>">
           <%= lesson.student.name %>
           </a>
@@ -118,7 +99,11 @@
         <td><%= time %></td>
       <% @weekday.each do |day| %>
         <td>
+          <% if Lesson.where({:student => current_student.id, :lesson_time => Chronic.parse("#{@week} weeks from now #{day} at #{time}") }).any? == false %>
           <a href="/lessons/new/<%=Chronic.parse("#{@week} weeks from now #{day} ").strftime('%B_%e')%>_<%=time%>" class="btn btn-lg btn-success">+</a>
+          <%else%>
+          <a href="/lessons/new/<%=Chronic.parse("#{@week} weeks from now #{day} ").strftime('%B_%e')%>_<%=time%>" class="btn btn-lg btn-warning">-</a>
+          <%end%>
         <% @lessons.each do |lesson| %>
         <% if lesson.lesson_time == Chronic.parse("#{@week} weeks from now #{day} at #{time} ") %>
         <a href="/trainers/<%= lesson.trainer.id %>">
