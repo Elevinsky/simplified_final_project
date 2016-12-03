@@ -38,7 +38,7 @@
           <% if Lesson.where({:student => current_student.id, :lesson_time => Chronic.parse("this week #{day} at #{time}") }).any? == false %>
           <a href="/lessons/new/<%=Chronic.parse("#{day} of this week").strftime('%B_%e')%>_<%=time%>" class="btn btn-lg btn-success">+</a>
           <%else%>
-          <a href="/lessons/new/<%=Chronic.parse("#{day} of this week").strftime('%B_%e')%>_<%=time%>" class="btn btn-lg btn-warning">-</a>
+          <a href="/delete_lesson/<%= Lesson.where({:student => current_student.id, :lesson_time => Chronic.parse("this week #{day} at #{time}") }).pluck(:id).to_sentence%>" class="btn btn-lg btn-danger">-</a>
           <%end%>
         <% @lessons.each do |lesson| %>
         <% if lesson.lesson_time == Chronic.parse("this week #{day} at #{time}") %>
@@ -70,12 +70,12 @@
           <% if Lesson.where({:student => current_student.id, :lesson_time => Chronic.parse("next week #{day} at #{time}") }).any? == false %>
           <a href="/lessons/new/<%=Chronic.parse("#{day} of next week").strftime('%B_%e')%>_<%=time%>" class="btn btn-lg btn-success">+</a>
           <%else%>
-          <a href="/lessons/new/<%=Chronic.parse("#{day} of next week").strftime('%B_%e')%>_<%=time%>" class="btn btn-lg btn-warning">-</a>
+          <a href="/delete_lesson/<%= Lesson.where({:student => current_student.id, :lesson_time => Chronic.parse("next week #{day} at #{time}") }).pluck(:id).to_sentence%>" class="btn btn-lg btn-danger">-</a>
           <%end%>
         <% @lessons.each do |lesson| %>
         <% if lesson.lesson_time == Chronic.parse("next week #{day} at #{time} ") %>
         <a href="/trainers/<%= lesson.trainer.id %>">
-          <%= lesson.student.name %>
+          <%= lesson.trainer.name %>-<%= lesson.student.name %>
           </a>
           <% end %>
           <% end %>
@@ -102,7 +102,7 @@
           <% if Lesson.where({:student => current_student.id, :lesson_time => Chronic.parse("#{@week} weeks from now #{day} at #{time}") }).any? == false %>
           <a href="/lessons/new/<%=Chronic.parse("#{@week} weeks from now #{day} ").strftime('%B_%e')%>_<%=time%>" class="btn btn-lg btn-success">+</a>
           <%else%>
-          <a href="/lessons/new/<%=Chronic.parse("#{@week} weeks from now #{day} ").strftime('%B_%e')%>_<%=time%>" class="btn btn-lg btn-warning">-</a>
+          <a href="/delete_lesson/<%= Lesson.where({:student => current_student.id, :lesson_time => Chronic.parse("#{@week} weeks from now #{day} at #{time}") }).pluck(:id).to_sentence%>" class="btn btn-lg btn-danger">-</a>
           <%end%>
         <% @lessons.each do |lesson| %>
         <% if lesson.lesson_time == Chronic.parse("#{@week} weeks from now #{day} at #{time} ") %>

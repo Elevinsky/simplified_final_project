@@ -1,5 +1,4 @@
 class LessonsController < ApplicationController
-  before_action :current_user_must_be_lesson_user, :only => [:show, :edit, :update, :destroy]
 
   def current_user_must_be_lesson_student
     lesson = Lesson.find(params[:id])
