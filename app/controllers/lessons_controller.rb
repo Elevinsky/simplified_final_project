@@ -26,6 +26,7 @@ class LessonsController < ApplicationController
 
   def new
     @lesson = Lesson.new
+    @trainers = Trainer.all
 
     @time = params[:id]
     @cleantime = @time.gsub( "_", " ")
@@ -54,7 +55,7 @@ class LessonsController < ApplicationController
         redirect_back(:fallback_location => "/", :notice => "Lesson created successfully.")
       end
     else
-      render("lessons/new.html.erb")
+      render("lessons/index.html.erb")
     end
   end
 

@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Add Lesson</h3>
+  <h3>Add Lesson at <%= @chronictime.strftime('%l:%M %p') %></h3>
 </div>
 
 <%= @chronictime %>
@@ -26,26 +26,31 @@
           Trainer
         </label>
 
-        <%= select_tag(:trainer_id, options_from_collection_for_select(Trainer.all, :id, :name, @lesson.trainer_id), :class => "form-control") %>
+<% @trainers.each do |trainer| %>
+<% if Lesson.where({:lesson_time => @chronictime, :trainer_id => trainer.id }).any? == false %>
+<%= trainer.name%>
+<% end %>
+<% end %>
+
+
+
+
+        <%= select_tag(:trainer_id,
+        options_from_collection_for_select(@trainers.each do |trainer|
+        if Lesson.where({:lesson_time => @chronictime, :trainer_id => trainer.id }).any? == false
+        trainer
+        end
+        end, :id, :name, @lesson.trainer_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for student_id -->
-      <div class="form-group">
-        <label for="student_id" class="control-label">
-          Student
-        </label>
+      <input type="hidden" id="student_id" name="student_id" placeholder="Student" class="form-control" value="<%= current_student.id %>">
 
-        <%= select_tag(:student_id, options_from_collection_for_select(Student.all, :id, :name, @lesson.student_id), :class => "form-control") %>
-      </div>
+
 
       <!-- Label and input for lesson_time -->
-      <div class="form-group">
-        <label for="lesson_time" class="control-label">
-          Lesson time
-        </label>
 
-        <input type="text" id="lesson_time" name="lesson_time" placeholder="Lesson time" class="form-control" value="<%= @chronictime %>">
-      </div>
+        <input type="hidden" id="lesson_time" name="lesson_time" placeholder="Lesson time" class="form-control" value="<%= @chronictime %>">
 
 
       <button class="btn btn-success">
