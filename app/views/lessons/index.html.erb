@@ -14,9 +14,6 @@
   <% end %>
 </div>
 
-
-
-
 <div class="row">
   <div class="col-md-12">
     <table class="table table-striped table-hover">
@@ -36,10 +33,12 @@
         <td><%= time %></td>
       <% @weekday.each do |day| %>
         <td>
+          <% if Chronic.parse("this week #{day} at 12:00 AM") > Time.now %>
           <% if Lesson.where({:student => current_student.id, :lesson_time => Chronic.parse("this week #{day} at #{time}") }).any? == false %>
           <a href="/lessons/new/<%=Chronic.parse("#{day} of this week").strftime('%B_%e')%>_<%=time%>" class="btn btn-xs btn-success">+</a>
           <%else%>
           <a href="/delete_lesson/<%= Lesson.where({:student => current_student.id, :lesson_time => Chronic.parse("this week #{day} at #{time}") }).pluck(:id).to_sentence%>" class="btn btn-xs btn-danger">-</a>
+          <%end%>
           <%end%>
         <% @lessons.each do |lesson| %>
         <% if lesson.lesson_time == Chronic.parse("this week #{day} at #{time}") %>
