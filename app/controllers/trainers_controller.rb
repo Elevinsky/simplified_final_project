@@ -71,7 +71,7 @@ class TrainersController < ApplicationController
       when "/trainers/new", "/create_trainer"
         redirect_to("/trainers")
       else
-        redirect_back(:fallback_location => "/", :notice => "Trainer created successfully.")
+        redirect_to("/trainers", :notice => "Trainer created successfully.")
       end
     else
       render("trainers/new.html.erb")
@@ -132,7 +132,7 @@ class TrainersController < ApplicationController
 
       case referer
       when "/trainers/#{@trainer.id}/edit", "/update_trainer"
-        redirect_to("/trainers/#{@trainer.id}", :notice => "Trainer updated successfully.")
+        redirect_to("/trainers/", :notice => "Trainer updated successfully.")
       else
         redirect_back(:fallback_location => "/", :notice => "Trainer updated successfully.")
       end
