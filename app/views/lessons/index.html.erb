@@ -42,9 +42,13 @@
           <%end%>
         <% @lessons.each do |lesson| %>
         <% if lesson.lesson_time == Chronic.parse("this week #{day} at #{time}") %>
-        <a href="/trainers/<%= lesson.trainer.id %>">
+        <% if current_student.role == 'Trainer' %>
+        <a href="/lessons/detail/<%= lesson.id %>">
           <%= lesson.trainer.name %>- <%= lesson.student.name %>
           </a>
+          <%else%>
+          <%= lesson.trainer.name %>- <%= lesson.student.name %>
+          <%end%>
           <% end %>
           <% end %>
           <% end %>
@@ -74,9 +78,13 @@
           <%end%>
         <% @lessons.each do |lesson| %>
         <% if lesson.lesson_time == Chronic.parse("next week #{day} at #{time} ") %>
-        <a href="/trainers/<%= lesson.trainer.id %>">
-          <%= lesson.trainer.name %>-<%= lesson.student.name %>
+        <% if current_student.role == 'Trainer' %>
+        <a href="/lesson/<%=lesson.id%>">
+          <%= lesson.trainer.name %>- <%= lesson.student.name %>
           </a>
+          <%else%>
+          <%= lesson.trainer.name %>- <%= lesson.student.name %>
+          <%end%>
           <% end %>
           <% end %>
           <% end %>
@@ -106,9 +114,13 @@
           <%end%>
         <% @lessons.each do |lesson| %>
         <% if lesson.lesson_time == Chronic.parse("#{@week} weeks from now #{day} at #{time} ") %>
-        <a href="/trainers/<%= lesson.trainer.id %>">
-          <%= lesson.trainer.name %>-<%= lesson.student.name %>
+        <% if current_student.role == 'Trainer' %>
+        <a href="/trainers/<%= lesson.id %>">
+          <%= lesson.trainer.name %>- <%= lesson.student.name %>
           </a>
+          <%else%>
+          <%= lesson.trainer.name %>- <%= lesson.student.name %>
+          <%end%>
           <% end %>
           <% end %>
           <% end %>
@@ -118,6 +130,6 @@
       <% end %>
 
     </table>
-    
+
   </div>
 </div>

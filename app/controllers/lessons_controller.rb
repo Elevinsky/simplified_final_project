@@ -32,6 +32,7 @@ class LessonsController < ApplicationController
     @cleantime = @time.gsub( "_", " ")
     @chronictime = Chronic.parse(@cleantime)
 
+    @referer = URI(request.referer).path
 
     render("lessons/new.html.erb")
   end
@@ -49,7 +50,7 @@ class LessonsController < ApplicationController
       referer = URI(request.referer).path
 
       case referer
-      when "/lessons/new", "/create_lesson"
+      when "/lessons/new/:id", "/create_lesson"
         redirect_to("/lessons")
       else
         redirect_back(:fallback_location => "/", :notice => "Lesson created successfully.")

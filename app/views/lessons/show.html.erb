@@ -7,23 +7,15 @@
     <dl class="dl-horizontal">
       <dt>Trainer</dt>
       <dd>
-        <% if @lesson.trainer.present? %>
-          <a href="/trainers/<%= @lesson.trainer_id %>">
-            <%= @lesson.trainer.name %>
-          </a>
-        <% end %>
+        <%= @lesson.trainer.name %>
       </dd>
 
       <dt>Lesson time</dt>
-      <dd><%= @lesson.lesson_time %></dd>
+      <dd><%= @lesson.lesson_time.strftime('%b %e, %l:%M %p') %></dd>
 
       <dt>Student</dt>
       <dd>
-        <% if @lesson.student.present? %>
-          <a href="/students/<%= @lesson.student_id %>">
-            <%= @lesson.student.created_at %>
-          </a>
-        <% end %>
+          <%= @lesson.student.name %>
       </dd>
 
     </dl>
@@ -32,14 +24,9 @@
       <a href="/lessons" class="btn btn-primary">
         Back
       </a>
-      <% if current_user == @lesson.student %>
-        <a href="/lessons/<%= @lesson.id %>/edit" class="btn btn-warning">
-          Edit
-        </a>
         <a href="/delete_lesson/<%= @lesson.id %>" class="btn btn-danger" rel="nofollow">
           Delete
         </a>
-      <% end %>
     </div>
   </div>
 </div>
