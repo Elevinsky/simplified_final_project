@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h1>
+    <a <a href="/lessons">Perfecta Farm Lesson Schedule </a>
+  </h1>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Student</th>
+        <th>Trainer</th>
+        <th>Time</th>
+        <th> </th>
+      </tr>
+
+      <% @lessons.each do |lesson| %>
+      <tr>
+        <% if lesson.student.name = current_student.name %>
+        <% if lesson.lesson_time > Time.now %>
+        <td><%= lesson.student.name %></td>
+        <td><%= lesson.trainer.name %></td>
+        <td><%= lesson.lesson_time.strftime('%a-%m/%e %l:%M %p') %></td>
+        <td> <a href="/delete_lesson/<%= lesson.id %>" class="btn btn-danger" rel="nofollow">Cancel</a>
+        </td>
+        <% end %>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

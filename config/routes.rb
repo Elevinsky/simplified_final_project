@@ -88,6 +88,14 @@ Rails.application.routes.draw do
   get "/delete_trainer/:id", :controller => "trainers", :action => "destroy"
   #------------------------------
 
+
+  # Routes for My Lessons:
+  # READ
+  get "/my_lessons/:id", :controller => "my_lessons", :action => "index"
+
+
+  #------------------------------
+
   devise_for :students
   # Routes for the Student resource:
   # READ

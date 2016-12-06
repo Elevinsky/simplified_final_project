@@ -118,21 +118,7 @@ Min: <%= @chronictime.min %><br> -->
           Trainer
         </label>
 
-<% @trainers.each do |trainer| %>
-<% if Lesson.where({:lesson_time => @chronictime, :trainer_id => trainer.id }).any? == false %>
-<%= trainer.name%>
-<% end %>
-<% end %>
-
-
-
-
-        <%= select_tag(:trainer_id,
-        options_from_collection_for_select(@trainers.each do |trainer|
-        if Lesson.where({:lesson_time => @chronictime, :trainer_id => trainer.id }).any? == false
-        trainer
-        end
-        end, :id, :name, @lesson.trainer_id), :class => "form-control") %>
+        <%= select_tag(:trainer_id, options_from_collection_for_select(Trainer.where(:id => trainers_available), :id, :name, @lesson.trainer_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for student_id -->
