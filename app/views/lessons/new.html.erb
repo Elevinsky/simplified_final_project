@@ -1,3 +1,20 @@
+<br><br><br>
+Time: <%= @chronictime %><br>
+Day: <%= @chronictime.wday %><br>
+Hour: <%= @chronictime.hour %><br>
+Min: <%= @chronictime.min %><br>
+
+
+<% trainers_available = [] %>
+<% Trainer.all.each do |trainer| %>
+<% if Lesson.where({:lesson_time => @chronictime, :trainer_id => trainer.id }).any? == false && %>
+<%= trainer.name%>
+<% trainers_available.push trainer.id %>
+<% end %>
+<% end %>
+Trainers available: <%= trainers_available %>
+
+
 <!-- Validation failure messages -->
 <% if @lesson.errors.any? %>
   <% @lesson.errors.full_messages.each do |message| %>
@@ -27,7 +44,7 @@
           Trainer
         </label>
 
-        <%= select_tag(:trainer_id, options_from_collection_for_select(Trainer.all, :id, :name, @lesson.trainer_id), :class => "form-control") %>
+        <%= select_tag(:trainer_id, options_from_collection_for_select(Trainer.where(:id => trainers_available), :id, :name, @lesson.trainer_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for student_id -->
