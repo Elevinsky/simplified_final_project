@@ -48,7 +48,7 @@ class LessonsController < ApplicationController
 
     @lesson_page = params[:lesson_page]
 
-    redirect_to("#{@lesson_page}")
+    redirect_to("#{@lesson_page}", :notice => "Lesson added")
   end
 
   def edit
@@ -85,7 +85,7 @@ class LessonsController < ApplicationController
 
     @lesson.destroy
 
-    if URI(request.referer).path == "/lessons/#{@lesson.id}"
+    if URI(request.referer).path == "/lessons/"
       redirect_to("/", :notice => "Lesson deleted.")
     else
       redirect_back(:fallback_location => "/", :notice => "Lesson deleted.")

@@ -4,7 +4,6 @@ Day: <%= @chronictime.wday %><br>
 Hour: <%= @chronictime.hour %><br>
 Min: <%= @chronictime.min %><br> -->
 
-
 <% trainers_available = [] %>
 <% Trainer.all.each do |trainer| %>
 <% if Lesson.where({:lesson_time => @chronictime, :trainer_id => trainer.id }).any? == false && %>
@@ -49,7 +48,7 @@ Min: <%= @chronictime.min %><br> -->
 <% end %>
 <% end %>
 <% end %>
-<% if @chronictime.wday == 7 %>
+<% if @chronictime.wday == 0 %>
   <% if Chronic.parse("today at #{trainer.sun_start_hour}:#{trainer.sun_start_min} #{trainer.sun_start_am_pm}") <= Chronic.parse("today at #{@chronictime.hour}:#{@chronictime.min}") %>
   <% if Chronic.parse("today at #{trainer.sun_end_hour}:#{trainer.sun_end_min} #{trainer.sun_end_am_pm}") > Chronic.parse("today at #{@chronictime.hour}:#{@chronictime.min}") %>
   <% trainer.name %>
@@ -61,7 +60,12 @@ Min: <%= @chronictime.min %><br> -->
 <% end %>
 <!-- Trainers available: <%= trainers_available %> -->
 
+<% if trainers_available.length == 0 %>
+<h3>Sorry no lessons available</h3>
 
+<a href="<%=@referer%>">Cancel</a>
+
+<% else %>
 <!-- Validation failure messages -->
 <% if @lesson.errors.any? %>
   <% @lesson.errors.full_messages.each do |message| %>
@@ -76,7 +80,7 @@ Min: <%= @chronictime.min %><br> -->
   <h3>Add Lesson at <%= @chronictime.strftime('%l:%M %p') %></h3>
 </div>
 
-<%= @referer %>
+
 <% if current_student.role == 'Trainer' %>
 <div class="row">
   <div class="col-md-12">
@@ -138,7 +142,8 @@ Min: <%= @chronictime.min %><br> -->
         Create Lesson
       </button>
       or
-      <a href="/lessons">Cancel</a>
+      <a href="<%=@referer%>">Cancel</a>
     </form>
   </div>
 </div>
+<%end%>
