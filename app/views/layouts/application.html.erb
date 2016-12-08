@@ -13,7 +13,7 @@
     body {
       padding-top: 60px;
     }
-    
+
   </style>
 
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -49,7 +49,6 @@
           <li><a href="/students">Students</a></li>
         </ul>
         <%else%>
-        <ul class="nav navbar-nav">
           <li><a href="/lessons">Lessons</a></li>
           <li><a href="/my_lessons/<%=current_student.id%>">My Lessons</a></li>
         </ul>
