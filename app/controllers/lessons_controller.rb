@@ -46,18 +46,9 @@ class LessonsController < ApplicationController
 
     save_status = @lesson.save
 
-    if save_status == true
-      referer = URI(request.referer).path
+    @lesson_page = params[:lesson_page]
 
-      case referer
-      when "/lessons/new/:id", "/create_lesson"
-        redirect_to("/lessons")
-      else
-        redirect_back(:fallback_location => "/", :notice => "Lesson created successfully.")
-      end
-    else
-      render("lessons/index.html.erb")
-    end
+    redirect_to("#{@lesson_page}")
   end
 
   def edit

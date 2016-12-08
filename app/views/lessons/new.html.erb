@@ -11,7 +11,7 @@ Min: <%= @chronictime.min %><br> -->
 <% trainer.name%>
 <% if @chronictime.wday == 2 %>
   <% if Chronic.parse("today at #{trainer.tues_start_hour}:#{trainer.tues_start_min} #{trainer.tues_start_am_pm}") <= Chronic.parse("today at #{@chronictime.hour}:#{@chronictime.min}") %>
-  <% if Chronic.parse("today at #{trainer.tues_end_hour}:#{trainer.tues_end_min} #{trainer.tues_end_am_pm}") >= Chronic.parse("today at #{@chronictime.hour}:#{@chronictime.min}") %>
+  <% if Chronic.parse("today at #{trainer.tues_end_hour}:#{trainer.tues_end_min} #{trainer.tues_end_am_pm}") > Chronic.parse("today at #{@chronictime.hour}:#{@chronictime.min}") %>
   <%trainer.name %>
 <% trainers_available.push trainer.id %>
 <% end %>
@@ -19,7 +19,7 @@ Min: <%= @chronictime.min %><br> -->
 <% end %>
 <% if @chronictime.wday == 3 %>
   <% if Chronic.parse("today at #{trainer.wed_start_hour}:#{trainer.wed_start_min} #{trainer.wed_start_am_pm}") <= Chronic.parse("today at #{@chronictime.hour}:#{@chronictime.min}") %>
-  <% if Chronic.parse("today at #{trainer.wed_end_hour}:#{trainer.wed_end_min} #{trainer.wed_end_am_pm}") >= Chronic.parse("today at #{@chronictime.hour}:#{@chronictime.min}") %>
+  <% if Chronic.parse("today at #{trainer.wed_end_hour}:#{trainer.wed_end_min} #{trainer.wed_end_am_pm}") > Chronic.parse("today at #{@chronictime.hour}:#{@chronictime.min}") %>
   <%trainer.name %>
 <% trainers_available.push trainer.id %>
 <% end %>
@@ -27,7 +27,7 @@ Min: <%= @chronictime.min %><br> -->
 <% end %>
 <% if @chronictime.wday == 4 %>
   <% if Chronic.parse("today at #{trainer.thur_start_hour}:#{trainer.thur_start_min} #{trainer.thur_start_am_pm}") <= Chronic.parse("today at #{@chronictime.hour}:#{@chronictime.min}") %>
-  <% if Chronic.parse("today at #{trainer.thur_end_hour}:#{trainer.thur_end_min} #{trainer.thur_end_am_pm}") >= Chronic.parse("today at #{@chronictime.hour}:#{@chronictime.min}") %>
+  <% if Chronic.parse("today at #{trainer.thur_end_hour}:#{trainer.thur_end_min} #{trainer.thur_end_am_pm}") > Chronic.parse("today at #{@chronictime.hour}:#{@chronictime.min}") %>
   <% trainer.name %>
 <% trainers_available.push trainer.id %>
 <% end %>
@@ -35,7 +35,7 @@ Min: <%= @chronictime.min %><br> -->
 <% end %>
 <% if @chronictime.wday == 5 %>
   <% if Chronic.parse("today at #{trainer.fri_start_hour}:#{trainer.fri_start_min} #{trainer.fri_start_am_pm}") <= Chronic.parse("today at #{@chronictime.hour}:#{@chronictime.min}") %>
-  <% if Chronic.parse("today at #{trainer.fri_end_hour}:#{trainer.fri_end_min} #{trainer.fri_end_am_pm}") >= Chronic.parse("today at #{@chronictime.hour}:#{@chronictime.min}") %>
+  <% if Chronic.parse("today at #{trainer.fri_end_hour}:#{trainer.fri_end_min} #{trainer.fri_end_am_pm}") > Chronic.parse("today at #{@chronictime.hour}:#{@chronictime.min}") %>
   <% trainer.name %>
 <% trainers_available.push trainer.id %>
 <% end %>
@@ -43,7 +43,7 @@ Min: <%= @chronictime.min %><br> -->
 <% end %>
 <% if @chronictime.wday == 6 %>
   <% if Chronic.parse("today at #{trainer.sat_start_hour}:#{trainer.sat_start_min} #{trainer.sat_start_am_pm}") <= Chronic.parse("today at #{@chronictime.hour}:#{@chronictime.min}") %>
-  <% if Chronic.parse("today at #{trainer.sat_end_hour}:#{trainer.sat_end_min} #{trainer.sat_end_am_pm}") >= Chronic.parse("today at #{@chronictime.hour}:#{@chronictime.min}") %>
+  <% if Chronic.parse("today at #{trainer.sat_end_hour}:#{trainer.sat_end_min} #{trainer.sat_end_am_pm}") > Chronic.parse("today at #{@chronictime.hour}:#{@chronictime.min}") %>
   <% trainer.name %><br>
 <% trainers_available.push trainer.id %>
 <% end %>
@@ -51,7 +51,7 @@ Min: <%= @chronictime.min %><br> -->
 <% end %>
 <% if @chronictime.wday == 7 %>
   <% if Chronic.parse("today at #{trainer.sun_start_hour}:#{trainer.sun_start_min} #{trainer.sun_start_am_pm}") <= Chronic.parse("today at #{@chronictime.hour}:#{@chronictime.min}") %>
-  <% if Chronic.parse("today at #{trainer.sun_end_hour}:#{trainer.sun_end_min} #{trainer.sun_end_am_pm}") >= Chronic.parse("today at #{@chronictime.hour}:#{@chronictime.min}") %>
+  <% if Chronic.parse("today at #{trainer.sun_end_hour}:#{trainer.sun_end_min} #{trainer.sun_end_am_pm}") > Chronic.parse("today at #{@chronictime.hour}:#{@chronictime.min}") %>
   <% trainer.name %>
 <% trainers_available.push trainer.id %>
 <% end %>
@@ -76,7 +76,7 @@ Min: <%= @chronictime.min %><br> -->
   <h3>Add Lesson at <%= @chronictime.strftime('%l:%M %p') %></h3>
 </div>
 
-
+<%= @referer %>
 <% if current_student.role == 'Trainer' %>
 <div class="row">
   <div class="col-md-12">
@@ -104,6 +104,7 @@ Min: <%= @chronictime.min %><br> -->
 
       <!-- Label and input for lesson_time -->
       <input type="hidden" id="lesson_time" name="lesson_time" placeholder="Lesson time" class="form-control" value="<%= @chronictime %>">
+      <input type="hidden" id="lesson_time" name="lesson_page"  class="form-control" value="<%= @referer %>">
       </div>
       <%else%>
 <div class="row">
@@ -129,6 +130,8 @@ Min: <%= @chronictime.min %><br> -->
       <!-- Label and input for lesson_time -->
 
         <input type="hidden" id="lesson_time" name="lesson_time" placeholder="Lesson time" class="form-control" value="<%= @chronictime %>">
+
+        <input type="hidden" id="lesson_time" name="lesson_page"  class="form-control" value="<%= @referer %>">
 
 <%end%>
       <button class="btn btn-success">
