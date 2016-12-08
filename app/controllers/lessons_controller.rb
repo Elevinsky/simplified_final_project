@@ -85,10 +85,6 @@ class LessonsController < ApplicationController
 
     @lesson.destroy
 
-    if URI(request.referer).path == "/lessons/"
       redirect_to("/", :notice => "Lesson deleted.")
-    else
-      redirect_back(:fallback_location => "/", :notice => "Lesson deleted.")
-    end
   end
 end
